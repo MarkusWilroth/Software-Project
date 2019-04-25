@@ -1,0 +1,10 @@
+Consept Art
+
+Här läggar man till bilder man gjort på hur man tänkt saker ska se ut, t.ex. byggnader, soldater eller HUD.
+Namngivningen på vad som är ritat är CA_VadDetÄrPå_Nravverision (T.ex. CA_SoldierSwordsman_1, CA_SoldierSwordsman_2).
+Sen innan vi lägger tid på att göra de riktiga versioner som är nogrannare och snyggare röstar vi om vilken Consept Art
+som är bäst. Det är viktigt att allt håller samma sorts stil så innan vi röstar borde vi ha CA på allt och gruppera de så att
+man röstar om en grupp Artstyle.
+
+Om någon tycker något annat ändra denna Textfil med att skriva ändringar nedan och så pratar vi om något ska ändras. Vi röstar 
+och alla måste vara med på de ändringar som röstas fram!
