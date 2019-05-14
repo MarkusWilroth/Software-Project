@@ -26,6 +26,10 @@ public class GridManager : MonoBehaviour {
 		}
 
         Destroy(referenceTile);
+
+        float gridW = cols * tileSize;
+        float gridH = rows * tileSize;
+        transform.position = new Vector2(-gridW / 2 + tileSize / 2, gridH / 2 - tileSize / 2);
 	}
 	// Update is called once per frame
 	void Update () {
