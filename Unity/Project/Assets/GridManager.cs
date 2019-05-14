@@ -13,12 +13,19 @@ public class GridManager : MonoBehaviour {
 		GenerateGrid();
 	}
 
-	private void generateGrid() {
+	private void GenerateGrid() {
+        GameObject referenceTile = (GameObject)Instantiate(Resources.Load("backyard_0")); //Byt namn på GrassTile
 		for (int row = 0; row < rows; row++) {
 			for (int col = 0; col < cols; col++) {
-				
+				GameObject tile = (GameObject)Instantiate(referenceTile, transform);
+                float posX = col * tileSize;
+                float posY = row * -tileSize;
+
+                tile.transform.position = new Vector2(posX, posY);
 			}
 		}
+
+        Destroy(referenceTile);
 	}
 	// Update is called once per frame
 	void Update () {
