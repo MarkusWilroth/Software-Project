@@ -14,17 +14,21 @@ public class Camera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 pos = transform.position;
-		if (Input.GetKey ("w") || Input.mousePosition.y >= Screen.height - panBorderThickness) {
+
+        //|| Input.mousePosition.y >= Screen.height - panBorderThickness
+
+
+        Vector3 pos = transform.position;
+		if (Input.GetKey ("w") ) {
 			pos.y += panSpeed * Time.deltaTime;
 		}
-		if (Input.GetKey ("s") || Input.mousePosition.y <= panBorderThickness) {
+		if (Input.GetKey ("s")) {
 			pos.y -= panSpeed * Time.deltaTime;
 		}
-		if (Input.GetKey ("d") || Input.mousePosition.x >= Screen.height - panBorderThickness) {
+		if (Input.GetKey ("d")) {
 			pos.x += panSpeed * Time.deltaTime;
 		}
-		if (Input.GetKey ("a") || Input.mousePosition.x <= panBorderThickness) {
+		if (Input.GetKey ("a")) {
 			pos.x -= panSpeed * Time.deltaTime;
 		}
 
