@@ -6,6 +6,7 @@ public class Camera : MonoBehaviour {
 
 	public float panSpeed = 7f;
 	public float panBorderThickness = 5f;
+	public Vector2 panLimit;
 
 	
 	// Update is called once per frame
@@ -23,6 +24,9 @@ public class Camera : MonoBehaviour {
 		if (Input.GetKey ("a") || Input.mousePosition.x <= panBorderThickness) {
 			pos.x -= panSpeed * Time.deltaTime;
 		}
+
+		pos.x = Mathf.Clamp (pos.x, -panLimit.x, panLimit.x);
+		pos.y = Mathf.Clamp (pos.y, -panLimit.y, panLimit.y);
 
 		transform.position = pos;
 	}
