@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour {
 
+    [SerializeField]
 	private int rows = 5;
+    [SerializeField]
 	private int cols = 8;
+    [SerializeField]
 	private float tileSize = 1;
 
 	// Use this for initialization
