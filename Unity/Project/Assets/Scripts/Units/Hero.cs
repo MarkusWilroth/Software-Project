@@ -28,7 +28,7 @@ public class Hero : MonoBehaviour {
         if (HP <= 0) {
             Respawn();
         }
-        if (gatherTroops) { //Kan vara ett bra sätt att samla sina heros och soldiers
+        if (gatherTroops) { //Kan vara ett bra sätt att samla sina heros och soldiers //Är detta meningen att det ska vara här man skapar sina soldater?
             heroPos = GameObject.FindGameObjectWithTag("Castle").transform;
         }
 
