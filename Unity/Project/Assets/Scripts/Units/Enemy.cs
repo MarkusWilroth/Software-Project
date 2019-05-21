@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
-    public int maxHP = 20;
-    public int HP = 20;
-    public int Armor = 0;
-    public int damage = 10;
-    public int maxFollowers = 0;
-    public int followers = 0;
-    public int followerLvl = 0;
-    public int range = 5;
+    public int maxHP, HP, armour, damage, maxEnemies, enemies, enemiesLvl, range;
     public float speed = 10f;
-    public Vector2 pos = new Vector2(0,0);
+    public Transform enemyPos;
 
     void Start() {
         HP = maxHP;
@@ -21,7 +14,7 @@ public class Enemy : MonoBehaviour {
     }
     
     void Update() {
-        if (followers < maxFollowers) {
+        if (enemies < maxEnemies) {
             Recruit();
         }
         //Funderar på om det inte är bäst att ha alla fiender i ett o samma script... vi får kolla på tutorials vad som är bäst
@@ -29,6 +22,6 @@ public class Enemy : MonoBehaviour {
 
     void Recruit() {
         //Skapar en ny fiende o ger dess stats beroende på vilka stats den kan ha
-        followers++;
+        enemies++;
     }
 }
