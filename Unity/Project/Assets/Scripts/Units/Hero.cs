@@ -15,17 +15,19 @@ public class Hero : MonoBehaviour {
     public Vector3 target;
     private Castle castle;
     private Enemy enemy;
+    private Camera cam;
     public Transform heroPos;
 
     void Start() {
         HP = maxHP;
+        cam = new Camera();
         //castle = GameObject.FindGameObjectWithTag("Castle").GetComponent<Castle>();
         //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
     }
 
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = transform.position.z;
             if (!move) {
                 move = true;

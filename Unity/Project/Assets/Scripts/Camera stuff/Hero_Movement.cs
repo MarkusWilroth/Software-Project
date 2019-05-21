@@ -13,8 +13,8 @@ public class Hero_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
-            GameObject.Destroy(this.gameObject);
-        }
+        //if (Input.GetMouseButtonDown(0)) {
+        //    GameObject.Destroy(this.gameObject);
+        //}
     }
 }

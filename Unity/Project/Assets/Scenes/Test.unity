@@ -18302,6 +18302,8 @@ MonoBehaviour:
   soldiersLvl: 1
   Exp: 0
   range: 0
+  point: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
   heroPos: {fileID: 0}
 --- !u!1 &1836208561
 GameObject:
@@ -18396,12 +18398,12 @@ PrefabInstance:
     - target: {fileID: 154318996902095770, guid: d868c716462ef574f9d5353ca3265b9f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.5
+      value: -5.29
       objectReference: {fileID: 0}
     - target: {fileID: 154318996902095770, guid: d868c716462ef574f9d5353ca3265b9f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.5
+      value: -4.08
       objectReference: {fileID: 0}
     - target: {fileID: 154318996902095770, guid: d868c716462ef574f9d5353ca3265b9f,
         type: 3}
