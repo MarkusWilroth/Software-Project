@@ -11,6 +11,7 @@ public class Spawner : MonoBehaviour {
 
     void Start() {
         timeBtwSpawns = startTimeBtwSpawns;
+
     }
 
     void Update() {

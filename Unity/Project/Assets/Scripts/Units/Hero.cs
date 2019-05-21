@@ -10,18 +10,31 @@ public class Hero : MonoBehaviour {
 
     public int maxHP, HP, armour, damage, soldiers, maxSoldiers, soldiersLvl, Exp, range;
     private float speed;
-    private bool unlocks, traits, weapon, gatherTroops, inRange;
+    private bool unlocks, traits, weapon, gatherTroops, inRange, move;
+    public GameObject point;
+    public Vector3 target;
     private Castle castle;
+    private Enemy enemy;
     public Transform heroPos;
 
     void Start() {
         HP = maxHP;
-        castle = GameObject.FindGameObjectWithTag("Castle").GetComponent<Castle>();
-        // pos = map.Spawnpoint
+        //castle = GameObject.FindGameObjectWithTag("Castle").GetComponent<Castle>();
+        //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
     }
 
     void Update() {
-        heroPos = GameObject.FindGameObjectWithTag("Enemy").transform;
+        if (Input.GetMouseButtonDown(0)) {
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            target.z = transform.position.z;
+            if (!move) {
+                move = true;
+            }
+            Instantiate(point, target, Quaternion.identity);
+        }
+        if (move) {
+            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        }
         if (soldiers < maxSoldiers) {
             Recruit();
         }
