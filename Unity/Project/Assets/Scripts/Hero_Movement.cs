@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Thisisatest : MonoBehaviour
+public class Hero_Movement : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,6 +13,8 @@ public class Thisisatest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0)) {
+            GameObject.Destroy(this.gameObject);
+        }
     }
 }

@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2642732097891023873}
   - component: {fileID: 8724030766380641812}
+  - component: {fileID: 2296415075039049237}
+  - component: {fileID: 3866839642334336037}
   m_Layer: 0
   m_Name: Hero_Captain
   m_TagString: Hero
@@ -26,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1321268313651732403}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.5, y: -3.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -79,3 +81,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2296415075039049237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321268313651732403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21e91c3befa2994699e9b548d9c04db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 20
+  HP: 20
+  armour: 7
+  damage: 7
+  soldiers: 0
+  maxSoldiers: 5
+  soldiersLvl: 1
+  Exp: 0
+  range: 1
+  heroPos: {fileID: 0}
+--- !u!114 &3866839642334336037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321268313651732403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7348202d95f9e742a39a81ed474390b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
+  target: {x: 0, y: 0, z: 0}

@@ -40,7 +40,7 @@ public class Castle : MonoBehaviour {
         
     }
 
-    public void takeDamage (int damage, bool AP) {
+    public void TakeDamage (int damage, bool AP) {
         if (AP) {
             damage -= (damage * (armor / 2));
         }

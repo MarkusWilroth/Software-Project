@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour {
+public class OurCamera : MonoBehaviour {
 
 	public float panSpeed = 7f;
 	public float panBorderThickness = 5f;

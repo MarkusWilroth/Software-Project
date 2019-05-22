@@ -9,10 +9,8 @@ public class Hero : MonoBehaviour {
     //}  Inte säker på att vi ska använda states?
 
     public int maxHP, HP, armour, damage, soldiers, maxSoldiers, soldiersLvl, Exp, range;
-    private float speed;
-    private bool unlocks, traits, weapon, gatherTroops, inRange, move;
-    public GameObject point;
-    public Vector3 target;
+    private bool unlocks, traits, weapon, gatherTroops, inRange;
+    private Ray ray;    
     private Castle castle;
     private Enemy enemy;
     private Camera cam;
@@ -26,17 +24,6 @@ public class Hero : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetMouseButtonDown(0)) {
-            //target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            target.z = transform.position.z;
-            if (!move) {
-                move = true;
-            }
-            Instantiate(point, target, Quaternion.identity);
-        }
-        if (move) {
-            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        }
         if (soldiers < maxSoldiers) {
             Recruit();
         }

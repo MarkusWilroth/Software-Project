@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5249372896275424560}
   - component: {fileID: 2711587308561323055}
+  - component: {fileID: 7270454384288727549}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -79,3 +80,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7270454384288727549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857370381840239562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc6f10307d60b7448b659e465394d50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 10
+  HP: 10
+  armour: 2
+  damage: 3
+  maxEnemies: 0
+  enemies: 0
+  enemiesLvl: 0
+  range: 0
+  speed: 0
+  castleDistance: 0
+  enemyPos: {fileID: 0}
