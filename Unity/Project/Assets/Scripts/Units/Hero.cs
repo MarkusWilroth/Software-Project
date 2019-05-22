@@ -12,13 +12,16 @@ public class Hero : MonoBehaviour {
     private bool unlocks, traits, weapon, gatherTroops, inRange;
     private Ray ray;    
     private Castle castle;
+    private CreateHero createHero;
     private Enemy enemy;
     private Camera cam;
     public Transform heroPos;
 
     void Start() {
-        HP = maxHP;
+        createHero = GetComponent<CreateHero>();
         cam = new Camera();
+        
+        //Respawn();
         //castle = GameObject.FindGameObjectWithTag("Castle").GetComponent<Castle>();
         //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
     }
@@ -33,14 +36,15 @@ public class Hero : MonoBehaviour {
         if (gatherTroops) { //Kan vara ett bra sätt att samla sina heros och soldiers //Är detta meningen att det ska vara här man skapar sina soldater?
             heroPos = GameObject.FindGameObjectWithTag("Castle").transform;
         }
-
     }
 
     void Recruit() {
+        createHero.Recruit();
         soldiers++;
     }
     void Respawn() {
-        // Timer som startar innan den får komma tillbaka        
+        createHero.resHero();
+        HP = maxHP;
         Start();
     }
 }

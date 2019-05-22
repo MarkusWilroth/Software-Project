@@ -14817,9 +14817,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 570999480}
-  - component: {fileID: 570999481}
   m_Layer: 0
-  m_Name: Spawn
+  m_Name: CastleSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14839,21 +14838,6 @@ Transform:
   m_Father: {fileID: 1758739081}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &570999481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 570999479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85635f7c723a02b43bd7af0d80fb69b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hero: {fileID: 1321268313651732403, guid: 8ac00b03a22231946bba7cda5f53f987, type: 3}
-  spawnSpots:
-  - {fileID: 570999480}
 --- !u!1 &698201622
 GameObject:
   m_ObjectHideFlags: 0
@@ -14864,7 +14848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 698201623}
   m_Layer: 0
-  m_Name: Spawnpoint 8
+  m_Name: Enemy spawn 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14895,7 +14879,7 @@ GameObject:
   - component: {fileID: 809925568}
   - component: {fileID: 809925569}
   m_Layer: 0
-  m_Name: Spawn Enemies
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14945,7 +14929,7 @@ MonoBehaviour:
   - {fileID: 1222674938}
   - {fileID: 1012423287}
   - {fileID: 698201623}
-  startTimeBtwSpawns: 5
+  startTimeBtwSpawns: 10
 --- !u!1 &837976469
 GameObject:
   m_ObjectHideFlags: 0
@@ -14956,7 +14940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 837976470}
   m_Layer: 0
-  m_Name: Spawnpoint 4
+  m_Name: Enemy spawn 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14986,7 +14970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 933517496}
   m_Layer: 0
-  m_Name: Spawnpoint 2
+  m_Name: Enemy Spawn 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15016,7 +15000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1010964125}
   m_Layer: 0
-  m_Name: Spawnpoint 5
+  m_Name: Enemy spawn 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15046,7 +15030,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1012423287}
   m_Layer: 0
-  m_Name: Spawnpoint 7
+  m_Name: Enemy spawn 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15076,7 +15060,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1015931625}
   - component: {fileID: 1015931626}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Castle
   m_TagString: Castle
   m_Icon: {fileID: 0}
@@ -15126,7 +15110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1152025677}
   - component: {fileID: 1152025678}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -15180,7 +15164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1222674938}
   m_Layer: 0
-  m_Name: Spawnpoint 6
+  m_Name: Enemy spawn 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15210,7 +15194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271488351}
   m_Layer: 0
-  m_Name: Spawnpoint 1
+  m_Name: Enemy spawn 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15285,7 +15269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1679596609}
   m_Layer: 0
-  m_Name: Spawnpoint 3
+  m_Name: Enemy spawn 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15316,6 +15300,7 @@ GameObject:
   - component: {fileID: 1758739081}
   - component: {fileID: 1758739082}
   - component: {fileID: 1758739083}
+  - component: {fileID: 1758739084}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Hero
@@ -15351,7 +15336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 40
-  HP: 40
+  HP: 0
   armour: 3
   damage: 15
   soldiers: 0
@@ -15374,7 +15359,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
-  target: {x: 0, y: 0, z: 0}
+--- !u!114 &1758739084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758739080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85635f7c723a02b43bd7af0d80fb69b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldier: {fileID: 6519392408821849541, guid: b407040fd310671458ff05a1c0503136, type: 3}
+  hero: {fileID: 1321268313651732403, guid: 8ac00b03a22231946bba7cda5f53f987, type: 3}
+  spawnSpots:
+  - {fileID: 570999480}
 --- !u!1 &1836208561
 GameObject:
   m_ObjectHideFlags: 0

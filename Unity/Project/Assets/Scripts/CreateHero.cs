@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CreateHero : MonoBehaviour
 {
-    public GameObject hero;
+    public GameObject soldier, hero;
     public Transform[] spawnSpots;
 
     void Start() {
@@ -12,8 +12,17 @@ public class CreateHero : MonoBehaviour
 
     void Update() {
         if (Input.GetKeyDown("space")) {
-            int randPos = Random.Range(0, spawnSpots.Length);
-            Instantiate(hero, spawnSpots[randPos].position, Quaternion.identity);
+            //int randPos = Random.Range(0, spawnSpots.Length);
+            //Instantiate(hero, spawnSpots[0].position, Quaternion.identity);
         }
+    }
+    public void Recruit() {
+        Instantiate(soldier, spawnSpots[0].position, Quaternion.identity);
+        Debug.Log("Success!!");
+    }
+
+    public void resHero() {
+        int randPos = Random.Range(0, spawnSpots.Length);
+        Instantiate(hero, spawnSpots[0].position, Quaternion.identity);
     }
 }
