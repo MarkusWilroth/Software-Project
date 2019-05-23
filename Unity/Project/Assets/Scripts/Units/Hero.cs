@@ -13,16 +13,16 @@ public class Hero : MonoBehaviour {
     private bool unlocks, traits, weapon, gatherTroops, inRange, active;
     private Ray ray;    
     private Castle castle;
-    private CreateHero createHero;
-    private Enemy enemy;
+    private Recruit recruit;
+    private EnemyLeader enemyLeader;
     private Camera cam;
     private Movement movement;
     public Transform heroPos, castlePos;
 
     void Start() {
-        createHero = GetComponent<CreateHero>();
+        recruit = GetComponent<Recruit>();
         movement = GetComponent<Movement>();
-        enemy = GetComponent<Enemy>();
+        enemyLeader = GetComponent<EnemyLeader>();
 
         cam = new Camera();
 
@@ -45,8 +45,6 @@ public class Hero : MonoBehaviour {
             if (Input.GetMouseButtonDown(0)) {
                 movement.ChangeTarget();
             }
-
-            
         }
 
         if (soldiers < maxSoldiers) {
@@ -62,11 +60,11 @@ public class Hero : MonoBehaviour {
     }
 
     void Recruit() {
-        createHero.Recruit(id);
+        recruit.RecruitSoldier(id);
         soldiers++;
     }
     void Respawn() {
-        createHero.resHero();
+        recruit.resHero();
         HP = maxHP;
     }
 }

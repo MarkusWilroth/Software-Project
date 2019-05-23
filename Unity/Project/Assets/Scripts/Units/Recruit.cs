@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class CreateHero : MonoBehaviour
+public class Recruit : MonoBehaviour
 {
     public GameObject soldier, hero;
     public Transform[] spawnSpots;
@@ -16,7 +16,7 @@ public class CreateHero : MonoBehaviour
             //Instantiate(hero, spawnSpots[0].position, Quaternion.identity);
         }
     }
-    public void Recruit(int id) {
+    public void RecruitSoldier(int id) {
         Instantiate(soldier, spawnSpots[0].position, Quaternion.identity);
         Debug.Log("Success!!");
     }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1965418444112674161}
   - component: {fileID: 3709652353574250250}
+  - component: {fileID: 8646629017725330194}
   m_Layer: 0
   m_Name: Enemy_knife
   m_TagString: Enemy
@@ -79,3 +80,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8646629017725330194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786540804516292282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef2b26fd9c730dc43857ab6a83123428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: 0
+  soldierLvl: 1
+  HP: 7
+  maxHP: 7
+  speed: 2
+  maxDistance: 1
+  minDistance: 0.5
+  EnemyDistance: 0

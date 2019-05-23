@@ -8,7 +8,6 @@ public class Soldiers : MonoBehaviour
     public float speed, maxDistance, minDistance, heroDistance;
     bool retreat;
     private Transform heroPos;
-    private CreateHero createHero;
 
     void Start()
     {
@@ -23,9 +22,6 @@ public class Soldiers : MonoBehaviour
     {
         heroDistance = Vector2.Distance(transform.position, heroPos.position);
         Movement();
-        if(HP <= 0) {
-            createHero.Die();
-        }
     }
 
     void Movement() {

@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Castle
   - Soldier
+  - EnemyLeader
   layers:
   - Default
   - TransparentFX

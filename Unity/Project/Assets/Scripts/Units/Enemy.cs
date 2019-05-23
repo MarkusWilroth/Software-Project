@@ -2,33 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
-
-    public int maxHP, HP, armour, damage, maxEnemies, enemies, enemiesLvl, range;
-    public float speed, castleDistance, minDistance;
-    public Transform enemyPos;
-    private Castle castle;
-    private Transform castlePos;
-
-    void Start() {
+public class Enemy : MonoBehaviour
+{
+    public int weapon, soldierLvl, HP, maxHP;
+    public float speed, maxDistance, minDistance, EnemyDistance;
+    bool retreat;
+    private Transform enemyLeaderPos;
+    void Start()
+    {
         HP = maxHP;
-        castlePos = GameObject.FindGameObjectWithTag("Castle").transform;
-        castleDistance = Vector2.Distance(transform.position, castlePos.position);
-    }
-    
-    void Update() {
-        castleDistance = Vector2.Distance(transform.position, castlePos.position);
-        if (castleDistance > minDistance) {
-            transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
-        }        
-        if (enemies < maxEnemies) {
-            Recruit();
-        }
-        //Funderar på om det inte är bäst att ha alla fiender i ett o samma script... vi får kolla på tutorials vad som är bäst
+        enemyLeaderPos = GameObject.FindGameObjectWithTag("EnemyLeader").transform;
+        EnemyDistance = Vector2.Distance(transform.position, enemyLeaderPos.position);
     }
 
-    void Recruit() {
-        //Skapar en ny fiende o ger dess stats beroende på vilka stats den kan ha
-        enemies++;
+    void Update()
+    {
+        EnemyDistance = Vector2.Distance(transform.position, enemyLeaderPos.position);
+        Movement();
+    }
+
+    void Movement() {
+        if (EnemyDistance > maxDistance) {
+            transform.position = Vector2.MoveTowards(transform.position, enemyLeaderPos.position, speed * Time.deltaTime);
+        } else if (EnemyDistance < minDistance) {
+            transform.position = Vector2.MoveTowards(transform.position, enemyLeaderPos.position, -speed * Time.deltaTime);
+        }
     }
 }
