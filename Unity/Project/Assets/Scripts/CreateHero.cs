@@ -21,6 +21,10 @@ public class CreateHero : MonoBehaviour
         Debug.Log("Success!!");
     }
 
+    public void Die() {
+        
+    }
+
     public void resHero() {
         int randPos = Random.Range(0, spawnSpots.Length);
         Instantiate(hero, spawnSpots[0].position, Quaternion.identity);
