@@ -9,24 +9,13 @@ public class Movement : MonoBehaviour
     public GameObject point;
     private Vector3 target;
     private bool move = false;
-
-    void Start()
-    {
-        
+    
+    void Update() {
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0)) {
-            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            target.z = transform.position.z;
-            if (!move) {
-                move = true;
-            }
-            Instantiate(point, target, Quaternion.identity);
-        }
-        if (move) {
-            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        }
+    public void ChangeTarget() {
+        target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        target.z = transform.position.z;
     }
 }

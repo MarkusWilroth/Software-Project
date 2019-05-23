@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelScript : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class LevelScript : MonoBehaviour {
+    private int heroID, maxHero, heros;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Start() {
+        if (heros <= maxHero) {
+
+        }
+
+    }
+    
+    void Update() {
+
     }
 }

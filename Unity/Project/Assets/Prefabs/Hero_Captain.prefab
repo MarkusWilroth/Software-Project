@@ -102,7 +102,10 @@ MonoBehaviour:
   soldiersLvl: 1
   Exp: 0
   range: 1
+  speed: 0
+  id: 1
   heroPos: {fileID: 0}
+  castlePos: {fileID: 0}
 --- !u!114 &3866839642334336037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,4 +120,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
-  target: {x: 0, y: 0, z: 0}

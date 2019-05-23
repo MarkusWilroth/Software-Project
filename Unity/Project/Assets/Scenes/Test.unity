@@ -15153,6 +15153,7 @@ MonoBehaviour:
   range: 5
   speed: 10
   castleDistance: 0
+  minDistance: 0
   enemyPos: {fileID: 0}
 --- !u!1 &1222674937
 GameObject:
@@ -15345,6 +15346,7 @@ MonoBehaviour:
   Exp: 0
   range: 0
   speed: 0
+  id: 0
   heroPos: {fileID: 0}
   castlePos: {fileID: 0}
 --- !u!114 &1758739083

@@ -6,8 +6,8 @@ public class CreateHero : MonoBehaviour
     public GameObject soldier, hero;
     public Transform[] spawnSpots;
 
-    void Start() {
-
+    void Start(int id) {
+        Instantiate(hero, spawnSpots[0].position, Quaternion.identity);
     }
 
     void Update() {
@@ -16,7 +16,7 @@ public class CreateHero : MonoBehaviour
             //Instantiate(hero, spawnSpots[0].position, Quaternion.identity);
         }
     }
-    public void Recruit() {
+    public void Recruit(int id) {
         Instantiate(soldier, spawnSpots[0].position, Quaternion.identity);
         Debug.Log("Success!!");
     }
