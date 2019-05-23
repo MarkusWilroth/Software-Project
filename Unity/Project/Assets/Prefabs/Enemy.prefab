@@ -102,4 +102,5 @@ MonoBehaviour:
   range: 0
   speed: 4
   castleDistance: 0
+  minDistance: 2
   enemyPos: {fileID: 0}

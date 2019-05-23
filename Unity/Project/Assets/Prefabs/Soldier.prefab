@@ -92,3 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f390d4698b933844bffae2687068ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: 0
+  soldierLvl: 1
+  HP: 10
+  maxHP: 10
+  speed: 4
+  maxDistance: 1
+  minDistance: 0.5

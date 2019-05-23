@@ -4,22 +4,31 @@ using UnityEngine;
 
 public class Soldiers : MonoBehaviour
 {
-    private int weapon, soldierLvl, HP, maxHP;
-    private float speed;
+    public int weapon, soldierLvl, HP, maxHP;
+    public float speed, maxDistance, minDistance, heroDistance;
     bool retreat;
-    private Hero hero;
-    private Transform soldierPos;
+    private Transform heroPos;
 
     void Start()
     {
         HP = maxHP;
-        hero = GameObject.FindGameObjectWithTag("Hero").GetComponent<Hero>();
+        heroPos = GameObject.FindGameObjectWithTag("Hero").transform;
+        heroDistance = Vector2.Distance(transform.position, heroPos.position);
         ////soldierPos = GameObject.FindGameObjectWithTag("Hero").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        soldierPos = GameObject.FindGameObjectWithTag("Hero").transform;
+        heroDistance = Vector2.Distance(transform.position, heroPos.position);
+        Movement();
+    }
+
+    void Movement() {
+        if (heroDistance > maxDistance) {
+            transform.position = Vector2.MoveTowards(transform.position, heroPos.position, speed * Time.deltaTime);
+        } else if (heroDistance < minDistance) {
+            transform.position = Vector2.MoveTowards(transform.position, heroPos.position, -speed * Time.deltaTime);
+        }
     }
 }

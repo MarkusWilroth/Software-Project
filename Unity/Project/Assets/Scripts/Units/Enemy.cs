@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
     public int maxHP, HP, armour, damage, maxEnemies, enemies, enemiesLvl, range;
-    public float speed, castleDistance;
+    public float speed, castleDistance, minDistance;
     public Transform enemyPos;
     private Castle castle;
     private Transform castlePos;
@@ -13,12 +13,14 @@ public class Enemy : MonoBehaviour {
     void Start() {
         HP = maxHP;
         castlePos = GameObject.FindGameObjectWithTag("Castle").transform;
-        //castleDistance = Vector2.Distance(transform.position, castlePos.position);
+        castleDistance = Vector2.Distance(transform.position, castlePos.position);
     }
     
     void Update() {
-        //enemyPos = GameObject.FindGameObjectWithTag("Enemy").transform;
-        transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
+        castleDistance = Vector2.Distance(transform.position, castlePos.position);
+        if (castleDistance > minDistance) {
+            transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
+        }        
         if (enemies < maxEnemies) {
             Recruit();
         }

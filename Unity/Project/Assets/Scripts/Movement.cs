@@ -18,10 +18,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) {
-            //Vector3 mousePosition = UnityInput.mousePosition;
-
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //target = mousePosition;
             target.z = transform.position.z;
             if (!move) {
                 move = true;

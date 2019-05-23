@@ -14929,7 +14929,7 @@ MonoBehaviour:
   - {fileID: 1222674938}
   - {fileID: 1012423287}
   - {fileID: 698201623}
-  startTimeBtwSpawns: 10
+  startTimeBtwSpawns: 2
 --- !u!1 &837976469
 GameObject:
   m_ObjectHideFlags: 0
@@ -15344,7 +15344,9 @@ MonoBehaviour:
   soldiersLvl: 1
   Exp: 0
   range: 0
+  speed: 0
   heroPos: {fileID: 0}
+  castlePos: {fileID: 0}
 --- !u!114 &1758739083
 MonoBehaviour:
   m_ObjectHideFlags: 0
