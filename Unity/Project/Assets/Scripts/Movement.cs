@@ -17,5 +17,12 @@ public class Movement : MonoBehaviour
     public void ChangeTarget() {
         target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         target.z = transform.position.z;
+        //Instantiate(point, target, Quaternion.identity);
+        if (!move) {
+            move = true;
+        }
+        if (move) {
+            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        }        
     }
 }

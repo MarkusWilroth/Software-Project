@@ -95,19 +95,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21e91c3befa2994699e9b548d9c04db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 20
-  HP: 20
-  armour: 7
-  damage: 7
+  maxHP: 40
+  HP: 40
+  armour: 3
+  damage: 15
   soldiers: 0
   maxSoldiers: 5
   soldiersLvl: 1
   Exp: 0
   range: 1
-  speed: 0
+  speed: 5
   id: 1
-  heroPos: {fileID: 0}
-  castlePos: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
+  point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
 --- !u!114 &3866839642334336037
 MonoBehaviour:
   m_ObjectHideFlags: 0

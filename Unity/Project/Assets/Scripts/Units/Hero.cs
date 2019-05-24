@@ -9,15 +9,16 @@ public class Hero : MonoBehaviour {
     //}  Inte säker på att vi ska använda states?
 
     public int maxHP, HP, armour, damage, soldiers, maxSoldiers, soldiersLvl, Exp, range, speed, id;
-    private Vector3 taget;
-    private bool unlocks, traits, weapon, gatherTroops, inRange, active;
+    public Vector3 target;
+    private bool unlocks, traits, weapon, gatherTroops, inRange, active, move;
     private Ray ray;    
     private Castle castle;
     private Recruit recruit;
     private EnemyLeader enemyLeader;
     private Camera cam;
     private Movement movement;
-    public Transform heroPos, castlePos;
+    private Transform heroPos, castlePos;
+    public GameObject point;
 
     void Start() {
         recruit = GetComponent<Recruit>();
@@ -42,7 +43,17 @@ public class Hero : MonoBehaviour {
             if (Input.GetKeyDown("space")) {
                 active = false;
             }
+
             if (Input.GetMouseButtonDown(0)) {
+                //target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                //target.z = transform.position.z;
+                ////Instantiate(point, target, Quaternion.identity);
+                //if (!move) {
+                //    move = true;
+                //}
+                //if (move) {
+                //    transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+                //}
                 movement.ChangeTarget();
             }
         }
