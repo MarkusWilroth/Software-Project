@@ -7,7 +7,7 @@ public class Recruit : MonoBehaviour
     public Transform[] spawnSpots;
 
     void Start(int id) {
-        Instantiate(hero, spawnSpots[0].position, Quaternion.identity);
+        Instantiate(hero, spawnSpots[1].position, Quaternion.identity);
     }
 
     void Update() {
@@ -17,7 +17,8 @@ public class Recruit : MonoBehaviour
         }
     }
     public void RecruitSoldier(int id) {
-        Instantiate(soldier, spawnSpots[0].position, Quaternion.identity);
+        int randPos = Random.Range(0, spawnSpots.Length);
+        Instantiate(soldier, spawnSpots[randPos].position, Quaternion.identity);
         Debug.Log("Success!!");
     }
 
@@ -25,8 +26,7 @@ public class Recruit : MonoBehaviour
         
     }
 
-    public void resHero() {
-        int randPos = Random.Range(0, spawnSpots.Length);
+    public void resHero() {        
         Instantiate(hero, spawnSpots[0].position, Quaternion.identity);
     }
 }

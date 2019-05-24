@@ -25,10 +25,16 @@ public class Soldiers : MonoBehaviour
     }
 
     void Movement() {
-        if (heroDistance > maxDistance) {
-            transform.position = Vector2.MoveTowards(transform.position, heroPos.position, speed * Time.deltaTime);
-        } else if (heroDistance < minDistance) {
-            transform.position = Vector2.MoveTowards(transform.position, heroPos.position, -speed * Time.deltaTime);
+            if (heroDistance > maxDistance) {
+                transform.position = Vector2.MoveTowards(transform.position, heroPos.position, speed * Time.deltaTime);
+            } else if (heroDistance < minDistance) {
+                transform.position = Vector2.MoveTowards(transform.position, heroPos.position, -speed * Time.deltaTime);
+            }        
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("EnemyLeader") || other.CompareTag("Enemy")) {
+            HP--;
         }
     }
 }
