@@ -24,6 +24,7 @@ public class Hero : MonoBehaviour {
         recruit = GetComponent<Recruit>();
         movement = GetComponent<Movement>();
         enemyLeader = GetComponent<EnemyLeader>();
+        gatherTroops = false;
 
         cam = new Camera();
 
@@ -45,15 +46,6 @@ public class Hero : MonoBehaviour {
             }
 
             if (Input.GetMouseButtonDown(0)) {
-                //target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                //target.z = transform.position.z;
-                ////Instantiate(point, target, Quaternion.identity);
-                //if (!move) {
-                //    move = true;
-                //}
-                //if (move) {
-                //    transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-                //}
                 movement.ChangeTarget();
             }
         }
@@ -65,8 +57,8 @@ public class Hero : MonoBehaviour {
             Respawn();
         }
         
-        if (gatherTroops && Vector2.Distance(transform.position, castlePos.position) > 2) { //Kan vara ett bra sätt att samla sina heros och soldiers //Är detta meningen att det ska vara här man skapar sina soldater?
-            transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
+        if (gatherTroops = true && Vector2.Distance(transform.position, castlePos.position) > 2) { //Kan vara ett bra sätt att samla sina heros och soldiers //Är detta meningen att det ska vara här man skapar sina soldater?
+            //transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
         }
     }
 
