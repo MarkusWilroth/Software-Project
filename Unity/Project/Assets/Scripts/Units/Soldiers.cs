@@ -14,13 +14,13 @@ public class Soldiers : MonoBehaviour
         HP = maxHP;
         switch (id) {
             case 1:
-                heroPos = GameObject.FindGameObjectWithTag("RangerHero").transform;
+                heroPos = GameObject.FindGameObjectWithTag("RangeHero").transform;
                 break;
             case 2:
                 heroPos = GameObject.FindGameObjectWithTag("WarriorHero").transform;
                 break;
         }
-        Debug.Log(heroPos);
+        
         heroDistance = Vector2.Distance(transform.position, heroPos.position);
         ////soldierPos = GameObject.FindGameObjectWithTag("Hero").transform;
     }

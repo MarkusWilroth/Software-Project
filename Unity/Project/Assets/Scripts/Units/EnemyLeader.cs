@@ -8,7 +8,7 @@ public class EnemyLeader : MonoBehaviour {
     public float speed, minDistance, attackDistance;
     private float warriorHeroDistance, rangeHeroDistance, castleDistance, inRange, attackTimer;
     private Castle castle;
-    private Hero scriptWarrior;
+    private Hero scriptWarrior, hero;
     private Transform castlePos, warriorHeroPos, soldierPos, rangeHeroPos;
     private Spawner spawner;
     GameObject warriorO, ranger, tower;
@@ -16,24 +16,19 @@ public class EnemyLeader : MonoBehaviour {
     void Start() {
         HP = maxHP;
         
-        rangeHeroPos = GameObject.FindGameObjectWithTag("RangeHero").transform;
-        soldierPos = GameObject.FindGameObjectWithTag("Soldier").transform;
-        castlePos = GameObject.FindGameObjectWithTag("Castle").transform;
         castle = GetComponent<Castle>();
-        //hero = GetComponent<Hero>();
-        spawner.GetComponent<Spawner>();
-        warriorO = GameObject.FindGameObjectWithTag("WarriorHero");
+        spawner = GetComponent<Spawner>();
+        //warriorO = GameObject.FindGameObjectWithTag("WarriorHero");
         //warriorHeroPos = warriorO.transform;
-        warriorO.GetComponent<Hero>().TakeDamage(damage);
+        //warriorO.GetComponent<Hero>().TakeDamage(damage);
 
     }
     
     void Update() {
-        castleDistance = Vector2.Distance(transform.position, castlePos.position);
-        warriorHeroDistance = Vector2.Distance(transform.position, warriorHeroPos.position);
-        rangeHeroDistance = Vector2.Distance(transform.position, rangeHeroPos.position);
+        //transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
+        Variables();
         attackTimer--;
-        scriptWarrior.TakeDamage(damage);
+        //scriptWarrior.TakeDamage(damage);
 
         if(rangeHeroDistance < attackDistance) {
             AttackRangeEnemy();
@@ -42,15 +37,23 @@ public class EnemyLeader : MonoBehaviour {
         } else {
             AttackCastle();
         }
-        //if (castleDistance > minDistance) {
-        //    transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
-        //}        
+        
         if (enemies < maxEnemies) {
             spawner.SpawnEnemy();
-            enemies++;
-            //Spawn();
+            //enemies++;
+            Spawn();
         }
         //Funderar på om det inte är bäst att ha alla fiender i ett o samma script... vi får kolla på tutorials vad som är bäst
+    }
+
+    void Variables() {
+        warriorHeroPos = GameObject.FindGameObjectWithTag("WarriorHero").transform;
+        rangeHeroPos = GameObject.FindGameObjectWithTag("RangeHero").transform;
+        soldierPos = GameObject.FindGameObjectWithTag("Soldier").transform;
+        castlePos = GameObject.FindGameObjectWithTag("Castle").transform;
+        castleDistance = Vector2.Distance(transform.position, castlePos.position);
+        warriorHeroDistance = Vector2.Distance(transform.position, warriorHeroPos.position);
+        rangeHeroDistance = Vector2.Distance(transform.position, rangeHeroPos.position);
     }
 
     void OnTriggerEnter2D(Collider2D other) {

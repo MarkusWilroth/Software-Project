@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7002057622122529246}
   - component: {fileID: 4209362389488953739}
   - component: {fileID: 7452871847682927134}
+  - component: {fileID: -8407152527370855316}
   m_Layer: 0
   m_Name: Hero_Warrior
   m_TagString: WarriorHero
@@ -106,6 +107,7 @@ MonoBehaviour:
   range: 0
   speed: 5
   id: 2
+  respawnTimer: 0
   point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
 --- !u!114 &7002057622122529246
 MonoBehaviour:
@@ -159,3 +161,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-8407152527370855316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8399032799516112155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e826edda371ff429231e85e0e1c420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ranger: {fileID: 1072776906524616894, guid: d0582641ab7deb74b9b0d9ea61d1ccac, type: 3}
+  swordsman: {fileID: 5491092165501036306, guid: 02545208e6478944bbe670fd0d77a480,
+    type: 3}
+  spawnSpots:
+  - {fileID: 0}

@@ -26,6 +26,6 @@ public class Spawner : MonoBehaviour {
     }
     
     public void SpawnEnemy() {
-        //Instantiate(enemy, enemyPos.position, Quaternion.identity);
+        Instantiate(enemy, enemyPos.position, Quaternion.identity);
     }
 }

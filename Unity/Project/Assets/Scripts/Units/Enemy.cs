@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int weapon, soldierLvl, HP, maxHP;
+    public int weapon, HP, maxHP;
     public float speed, maxDistance, minDistance, EnemyDistance;
     bool retreat;
     private Transform enemyLeaderPos;

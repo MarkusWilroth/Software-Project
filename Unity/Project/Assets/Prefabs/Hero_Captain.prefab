@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3866839642334336037}
   - component: {fileID: 3453647709658734576}
   - component: {fileID: 1660470243600307053}
+  - component: {fileID: 2900916962824380239}
   m_Layer: 0
   m_Name: Hero_Captain
   m_TagString: RangeHero
@@ -106,6 +107,7 @@ MonoBehaviour:
   range: 1
   speed: 4
   id: 1
+  respawnTimer: 0
   point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
 --- !u!114 &3866839642334336037
 MonoBehaviour:
@@ -159,3 +161,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2900916962824380239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321268313651732403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e826edda371ff429231e85e0e1c420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ranger: {fileID: 1072776906524616894, guid: d0582641ab7deb74b9b0d9ea61d1ccac, type: 3}
+  swordsman: {fileID: 5491092165501036306, guid: 02545208e6478944bbe670fd0d77a480,
+    type: 3}
+  spawnSpots: {fileID: 0}

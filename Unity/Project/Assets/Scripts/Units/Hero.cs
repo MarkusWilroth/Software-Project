@@ -8,11 +8,12 @@ public class Hero : MonoBehaviour {
     //    retreat
     //}  Inte säker på att vi ska använda states?
 
-    public int maxHP, HP, armour, damage, soldiers, maxSoldiers, soldiersLvl, Exp, range, speed, id;
-    private bool unlocks, traits, weapon, gatherTroops, inRange, active, move;
-    private Ray ray;    
+    public int maxHP, HP, armour, damage, soldiers, maxSoldiers, soldiersLvl, Exp, range, speed, id, respawnTimer;
+    private bool unlocks, traits, weapon, gatherTroops, inRange, active, move, alive;
+    private Ray ray;
+    private Vector2 vecPos;
     private Castle castle;
-    private Recruit recruit;
+    private SoldierSpawn recruit;
     private EnemyLeader enemyLeader;
     private Camera cam;
     private Movement movement;
@@ -20,13 +21,13 @@ public class Hero : MonoBehaviour {
     public GameObject point;
 
     void Start() {
-        recruit = GetComponent<Recruit>();
+        recruit = GetComponent<SoldierSpawn>();
         movement = GetComponent<Movement>();
         enemyLeader = GetComponent<EnemyLeader>();
         gatherTroops = false;
 
         cam = new Camera();
-        
+
 
         //Respawn();
         //castle = GameObject.FindGameObjectWithTag("Castle").GetComponent<Castle>();
@@ -37,7 +38,7 @@ public class Hero : MonoBehaviour {
 
     void Update() {
         //Debug.Log(active);
-        
+        respawnTimer--;
         if (!active && Input.GetKeyDown(id.ToString())) {
             active = true; //endast när heron är aktiv kan han få en punkt att gå till, han ska fortfarande kunna gå
         }
@@ -55,12 +56,19 @@ public class Hero : MonoBehaviour {
             Recruit();
         }
         if (HP <= 0) {
+            alive = false;
+            respawnTimer = 600;
+            //gameObject.SetActive(false);
+
+        }
+        if (!alive && respawnTimer <= 0) {
             Respawn();
         }
-        
+
         if (gatherTroops && Vector2.Distance(transform.position, castlePos.position) > 2) { //Kan vara ett bra sätt att samla sina heros och soldiers //Är detta meningen att det ska vara här man skapar sina soldater?
             //transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
         }
+        vecPos = new Vector2(heroPos.position.x, heroPos.position.y);
     }
     public void TakeDamage(int damage) {
         HP -= damage;
@@ -68,11 +76,12 @@ public class Hero : MonoBehaviour {
     }
 
     void Recruit() {
-        recruit.RecruitSoldier(id);
+        recruit.RecruitSoldier(id, vecPos);
         soldiers++;
+        Debug.Log("Soldiers" + soldiers + " With id: "+ id);
     }
     void Respawn() {
-        recruit.resHero();
+        //recruit.resHero();
         HP = maxHP;
     }
 }
