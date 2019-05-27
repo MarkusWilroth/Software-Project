@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hero : MonoBehaviour {
     //public enum states {
@@ -8,8 +9,9 @@ public class Hero : MonoBehaviour {
     //    retreat
     //}  Inte säker på att vi ska använda states?
 
-    public int maxHP, HP, armour, damage, soldiers, maxSoldiers, soldiersLvl, Exp, range, speed, id, respawnTimer;
-    private bool unlocks, traits, weapon, gatherTroops, inRange, active, move, alive;
+    public int maxHP, HP, armour, damage, soldiers, maxSoldiers, soldiersLvl, Exp, range, speed, id, respawnTimer,  active;
+    //public bool active;
+    private bool unlocks, traits, weapon, gatherTroops, inRange, move, alive;
     private Ray ray;
     private Vector2 vecPos;
     private Castle castle;
@@ -29,7 +31,6 @@ public class Hero : MonoBehaviour {
 
         cam = new Camera();
 
-
         //Respawn();
         //castle = GameObject.FindGameObjectWithTag("Castle").GetComponent<Castle>();
         //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
@@ -40,13 +41,13 @@ public class Hero : MonoBehaviour {
     void Update() {
         //Debug.Log(active);
         respawnTimer--;
-        if (!active && Input.GetKeyDown(id.ToString())) {
-            active = true; //endast när heron är aktiv kan han få en punkt att gå till, han ska fortfarande kunna gå
-        }
-        if (active) {
-            if (Input.GetKeyDown("space")) {
-                active = false;
-            }
+        //if (!active && Input.GetKeyDown(id.ToString())) {
+        //    //active = true; //endast när heron är aktiv kan han få en punkt att gå till, han ska fortfarande kunna gå
+        //}
+        if (active == id) {
+            //if (Input.GetKeyDown("space")) {
+            //    //active = false;
+            //}
 
             if (Input.GetMouseButtonDown(0)) {
                 movement.ChangeTarget();
@@ -60,8 +61,7 @@ public class Hero : MonoBehaviour {
             alive = false;
             respawnTimer = 600;
             //gameObject.SetActive(false);
-            Destroy(gameObject);
-
+            transform.position = new Vector2(0, 0);
         }
         if (!(alive) && respawnTimer <= 0) {
             Respawn();
@@ -73,6 +73,11 @@ public class Hero : MonoBehaviour {
         }
         vecPos = new Vector2(heroPos.position.x, heroPos.position.y);
     }
+    public void SetActive(int active) {
+        this.active = active;
+        Debug.Log("Active: " +this.active+" ID: "+ id);
+    }
+
     public void TakeDamage(int damage) {
         HP -= damage;
     }
