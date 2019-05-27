@@ -6,9 +6,9 @@ public class EnemyLeader : MonoBehaviour {
 
     public int maxHP, HP, armour, damage, maxEnemies, enemies, enemiesLvl, range;
     public float speed, minDistance, attackDistance;
-    private float warriorHeroDistance, rangeHeroDistance, castleDistance, inRange, attackTimer;
+    public float warriorHeroDistance, rangeHeroDistance, castleDistance, inRange, attackTimer;
     private Castle castle;
-    private Hero scriptWarrior, hero;
+    private Hero scriptWarrior, scriptRanger;
     private Transform castlePos, warriorHeroPos, soldierPos, rangeHeroPos;
     private Spawner spawner;
     GameObject warriorO, ranger, tower;
@@ -18,22 +18,20 @@ public class EnemyLeader : MonoBehaviour {
         
         castle = GetComponent<Castle>();
         spawner = GetComponent<Spawner>();
-        //warriorO = GameObject.FindGameObjectWithTag("WarriorHero");
-        //warriorHeroPos = warriorO.transform;
-        //warriorO.GetComponent<Hero>().TakeDamage(damage);
 
     }
     
     void Update() {
-        //transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
         Variables();
         attackTimer--;
         //scriptWarrior.TakeDamage(damage);
 
-        if(rangeHeroDistance < attackDistance) {
-            AttackRangeEnemy();
-        } else if (warriorHeroDistance < attackDistance) {
-            AttackWarriorEnemy();        
+        if(rangeHeroDistance < attackDistance || warriorHeroDistance < attackDistance) {
+            if(rangeHeroDistance <= warriorHeroDistance) {
+                AttackRangeEnemy();
+            } else {
+                AttackWarriorEnemy();
+            }
         } else {
             AttackCastle();
         }
@@ -42,6 +40,10 @@ public class EnemyLeader : MonoBehaviour {
             spawner.SpawnEnemy();
             //enemies++;
             Spawn();
+        }
+        if (HP <= 0) {
+            Debug.Log("Enemy Dead");
+            Destroy(gameObject);
         }
         //Funderar på om det inte är bäst att ha alla fiender i ett o samma script... vi får kolla på tutorials vad som är bäst
     }
@@ -54,31 +56,24 @@ public class EnemyLeader : MonoBehaviour {
         castleDistance = Vector2.Distance(transform.position, castlePos.position);
         warriorHeroDistance = Vector2.Distance(transform.position, warriorHeroPos.position);
         rangeHeroDistance = Vector2.Distance(transform.position, rangeHeroPos.position);
+        scriptWarrior = GameObject.FindGameObjectWithTag("WarriorHero").GetComponent<Hero>();
+        scriptRanger = GameObject.FindGameObjectWithTag("RangeHero").GetComponent<Hero>();
     }
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("WarriorHero") && attackTimer <= 0) {
             scriptWarrior.HP -= damage;
             HP--;
-            if(HP <= 0) {
-                Destroy(gameObject);
-            }
             attackTimer = 60;
         }
         if (other.CompareTag("RangeHero") && attackTimer <= 0) {
-            scriptWarrior.HP -= damage;
+            scriptRanger.TakeDamage(damage);
             HP--;
-            if (HP <= 0) {
-                Destroy(gameObject);
-            }
             attackTimer = 60;
         }
         if (other.CompareTag("Castle") && attackTimer <= 0) {
             castle.HP -= damage;
             HP--;
-            if (HP <= 0) {
-                Destroy(gameObject);
-            }
             attackTimer = 60;
         }
     }

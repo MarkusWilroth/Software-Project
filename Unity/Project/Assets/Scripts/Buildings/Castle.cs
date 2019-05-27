@@ -41,6 +41,7 @@ public class Castle : MonoBehaviour {
     }
 
     public void TakeDamage (int damage) {
-        HP -= damage;         
+        HP -= damage;
+        Debug.Log("Castle HP: " + HP);
     }
 }

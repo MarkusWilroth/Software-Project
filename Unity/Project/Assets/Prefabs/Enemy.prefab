@@ -94,8 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc6f10307d60b7448b659e465394d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
-  HP: 10
+  maxHP: 5
+  HP: 5
   armour: 2
   damage: 3
   maxEnemies: 4
@@ -105,6 +105,11 @@ MonoBehaviour:
   speed: 3
   minDistance: 2
   attackDistance: 5
+  warriorHeroDistance: 0
+  rangeHeroDistance: 0
+  castleDistance: 0
+  inRange: 0
+  attackTimer: 0
 --- !u!58 &-3751691707624179913
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -115,7 +120,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.05, y: 0}

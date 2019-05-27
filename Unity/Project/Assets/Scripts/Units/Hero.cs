@@ -25,6 +25,7 @@ public class Hero : MonoBehaviour {
         movement = GetComponent<Movement>();
         enemyLeader = GetComponent<EnemyLeader>();
         gatherTroops = false;
+        alive = true;
 
         cam = new Camera();
 
@@ -55,15 +56,17 @@ public class Hero : MonoBehaviour {
         if (soldiers < maxSoldiers) {
             Recruit();
         }
-        if (HP <= 0) {
+        if (HP <= 0 && alive) {
             alive = false;
             respawnTimer = 600;
             //gameObject.SetActive(false);
+            Destroy(gameObject);
 
         }
-        if (!alive && respawnTimer <= 0) {
+        if (!(alive) && respawnTimer <= 0) {
             Respawn();
         }
+        //Debug.Log("Hero HP: " + HP + "Hero ID: "+id);
 
         if (gatherTroops && Vector2.Distance(transform.position, castlePos.position) > 2) { //Kan vara ett bra sätt att samla sina heros och soldiers //Är detta meningen att det ska vara här man skapar sina soldater?
             //transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
@@ -72,16 +75,16 @@ public class Hero : MonoBehaviour {
     }
     public void TakeDamage(int damage) {
         HP -= damage;
-        Debug.Log("Success");
+        Debug.Log("Damage taken! HP: "+HP);
     }
 
     void Recruit() {
         recruit.RecruitSoldier(id, vecPos);
         soldiers++;
-        Debug.Log("Soldiers" + soldiers + " With id: "+ id);
     }
     void Respawn() {
         //recruit.resHero();
+        alive = true;
         HP = maxHP;
     }
 }

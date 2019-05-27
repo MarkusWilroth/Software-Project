@@ -7,7 +7,6 @@ public class SoldierSpawn : MonoBehaviour {
     public Transform spawnSpots;
 
     public void RecruitSoldier(int id, Vector2 heroPos) {
-        Debug.Log("Spawned: " + id);
         switch (id) {
             case 1:
                 Instantiate(ranger, heroPos, Quaternion.identity);
@@ -16,6 +15,5 @@ public class SoldierSpawn : MonoBehaviour {
                 Instantiate(swordsman, heroPos, Quaternion.identity);
                 break;
         }
-        Debug.Log("HeroPos: " + heroPos);
     }
 }
