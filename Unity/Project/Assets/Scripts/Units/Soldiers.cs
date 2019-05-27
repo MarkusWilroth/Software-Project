@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Soldiers : MonoBehaviour
 {
-    public int weapon, soldierLvl, HP, maxHP;
+    public int weapon, soldierLvl, HP, maxHP, id;
     public float speed, maxDistance, minDistance, heroDistance;
     bool retreat;
     private Transform heroPos;
@@ -12,7 +12,15 @@ public class Soldiers : MonoBehaviour
     void Start()
     {
         HP = maxHP;
-        heroPos = GameObject.FindGameObjectWithTag("Hero").transform;
+        switch (id) {
+            case 1:
+                heroPos = GameObject.FindGameObjectWithTag("RangerHero").transform;
+                break;
+            case 2:
+                heroPos = GameObject.FindGameObjectWithTag("WarriorHero").transform;
+                break;
+        }
+        Debug.Log(heroPos);
         heroDistance = Vector2.Distance(transform.position, heroPos.position);
         ////soldierPos = GameObject.FindGameObjectWithTag("Hero").transform;
     }

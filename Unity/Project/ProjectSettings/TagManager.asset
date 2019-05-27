@@ -10,6 +10,8 @@ TagManager:
   - Soldier
   - EnemyLeader
   - ArcherTower
+  - RangeHero
+  - WarriorHero
   layers:
   - Default
   - TransparentFX

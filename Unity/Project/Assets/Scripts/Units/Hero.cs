@@ -9,7 +9,6 @@ public class Hero : MonoBehaviour {
     //}  Inte säker på att vi ska använda states?
 
     public int maxHP, HP, armour, damage, soldiers, maxSoldiers, soldiersLvl, Exp, range, speed, id;
-    public Vector3 target;
     private bool unlocks, traits, weapon, gatherTroops, inRange, active, move;
     private Ray ray;    
     private Castle castle;
@@ -27,6 +26,7 @@ public class Hero : MonoBehaviour {
         gatherTroops = false;
 
         cam = new Camera();
+        
 
         //Respawn();
         //castle = GameObject.FindGameObjectWithTag("Castle").GetComponent<Castle>();
@@ -37,6 +37,7 @@ public class Hero : MonoBehaviour {
 
     void Update() {
         //Debug.Log(active);
+        
         if (!active && Input.GetKeyDown(id.ToString())) {
             active = true; //endast när heron är aktiv kan han få en punkt att gå till, han ska fortfarande kunna gå
         }
@@ -57,9 +58,13 @@ public class Hero : MonoBehaviour {
             Respawn();
         }
         
-        if (gatherTroops = true && Vector2.Distance(transform.position, castlePos.position) > 2) { //Kan vara ett bra sätt att samla sina heros och soldiers //Är detta meningen att det ska vara här man skapar sina soldater?
+        if (gatherTroops && Vector2.Distance(transform.position, castlePos.position) > 2) { //Kan vara ett bra sätt att samla sina heros och soldiers //Är detta meningen att det ska vara här man skapar sina soldater?
             //transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
         }
+    }
+    public void TakeDamage(int damage) {
+        HP -= damage;
+        Debug.Log("Success");
     }
 
     void Recruit() {

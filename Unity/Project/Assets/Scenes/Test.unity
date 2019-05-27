@@ -15363,36 +15363,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &399314244
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 399314245}
-  m_Layer: 0
-  m_Name: CastleSpawn 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &399314245
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399314244}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1758739081}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &507716678
 GameObject:
   m_ObjectHideFlags: 0
@@ -15550,7 +15520,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570999479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -1, z: 0}
+  m_LocalPosition: {x: -0.24, y: -2.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1758739081}
@@ -15649,7 +15619,7 @@ MonoBehaviour:
   - {fileID: 1222674938}
   - {fileID: 1012423287}
   - {fileID: 698201623}
-  startTimeBtwSpawns: 10
+  startTimeBtwSpawns: 1
 --- !u!1 &837976469
 GameObject:
   m_ObjectHideFlags: 0
@@ -16025,7 +15995,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 570999480}
-  - {fileID: 399314245}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16052,7 +16021,6 @@ MonoBehaviour:
   range: 0
   speed: 5
   id: 0
-  target: {x: 0, y: 0, z: 0}
   point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
 --- !u!114 &1758739083
 MonoBehaviour:
@@ -16068,6 +16036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
+  target: {x: 0, y: -2.5, z: 0}
 --- !u!114 &1758739084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16080,11 +16049,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85635f7c723a02b43bd7af0d80fb69b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldier: {fileID: 6519392408821849541, guid: b407040fd310671458ff05a1c0503136, type: 3}
-  hero: {fileID: 1321268313651732403, guid: 8ac00b03a22231946bba7cda5f53f987, type: 3}
+  ranger: {fileID: 1072776906524616894, guid: d0582641ab7deb74b9b0d9ea61d1ccac, type: 3}
+  swordsman: {fileID: 5491092165501036306, guid: 02545208e6478944bbe670fd0d77a480,
+    type: 3}
+  captain: {fileID: 1321268313651732403, guid: 8ac00b03a22231946bba7cda5f53f987, type: 3}
+  warrior: {fileID: 8399032799516112155, guid: 10b59c585e15881449c9b4949c586553, type: 3}
   spawnSpots:
   - {fileID: 570999480}
-  - {fileID: 399314245}
 --- !u!1 &1836208561
 GameObject:
   m_ObjectHideFlags: 0

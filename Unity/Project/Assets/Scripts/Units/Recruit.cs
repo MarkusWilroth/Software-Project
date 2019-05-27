@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class Recruit : MonoBehaviour
 {
-    public GameObject soldier, hero;
+    public GameObject ranger, swordsman, captain, warrior;
     public Transform[] spawnSpots;
 
     void Start(int id) {
-        Instantiate(hero, spawnSpots[1].position, Quaternion.identity);
+        Instantiate(captain, spawnSpots[0].position, Quaternion.identity);
+        Instantiate(warrior, spawnSpots[0].position, Quaternion.identity);
     }
 
     void Update() {
@@ -18,15 +19,16 @@ public class Recruit : MonoBehaviour
     }
     public void RecruitSoldier(int id) {
         int randPos = Random.Range(0, spawnSpots.Length);
-        Instantiate(soldier, spawnSpots[randPos].position, Quaternion.identity);
-        Debug.Log("Success!!");
+        Instantiate(swordsman, spawnSpots[randPos].position, Quaternion.identity);
+        Instantiate(ranger, spawnSpots[randPos].position, Quaternion.identity);
     }
 
     public void Die() {
         
     }
 
-    public void resHero() {        
-        Instantiate(hero, spawnSpots[0].position, Quaternion.identity);
+    public void resHero() {
+        Instantiate(captain, spawnSpots[0].position, Quaternion.identity);
+        Instantiate(warrior, spawnSpots[0].position, Quaternion.identity);
     }
 }

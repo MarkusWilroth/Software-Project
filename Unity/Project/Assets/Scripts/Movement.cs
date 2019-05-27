@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
 {
     public float speed;
     public GameObject point;
-    private Vector3 target;
+    public Vector3 target;
     private bool move = false;
     
     void Update() {
@@ -17,7 +17,6 @@ public class Movement : MonoBehaviour
     public void ChangeTarget() {
         target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         target.z = transform.position.z;
-        //Instantiate(point, target, Quaternion.identity);
         if (!move) {
             move = true;
         }

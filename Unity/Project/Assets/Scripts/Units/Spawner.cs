@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour {
     void Update() {        
         if (timeBtwSpawns <= 0) {
             int randPos = Random.Range(0, spawnSpots.Length);
-            //Instantiate(enemyLeader, spawnSpots[randPos].position, Quaternion.identity);
+            Instantiate(enemyLeader, spawnSpots[randPos].position, Quaternion.identity);
             timeBtwSpawns = startTimeBtwSpawns;
         } else {
             timeBtwSpawns -= Time.deltaTime;

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1660470243600307053}
   m_Layer: 0
   m_Name: Hero_Captain
-  m_TagString: Hero
+  m_TagString: RangeHero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,9 +104,8 @@ MonoBehaviour:
   soldiersLvl: 1
   Exp: 0
   range: 1
-  speed: 5
+  speed: 4
   id: 1
-  target: {x: -3, y: -1, z: 0}
   point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
 --- !u!114 &3866839642334336037
 MonoBehaviour:
@@ -122,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
+  target: {x: 0, y: -2.5, z: 0}
 --- !u!58 &3453647709658734576
 CircleCollider2D:
   m_ObjectHideFlags: 0
