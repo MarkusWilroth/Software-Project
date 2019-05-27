@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class SoldierSpawn : MonoBehaviour {
     public GameObject ranger, swordsman;
-    public Transform spawnSpots;
 
     public void RecruitSoldier(int id, Vector2 heroPos) {
         switch (id) {
             case 1:
                 Instantiate(ranger, heroPos, Quaternion.identity);
+                Debug.Log("Spawn Soldier: " + id);
                 break;
             case 2:
                 Instantiate(swordsman, heroPos, Quaternion.identity);
+                Debug.Log("Spawn Soldier: " + id);
                 break;
         }
     }

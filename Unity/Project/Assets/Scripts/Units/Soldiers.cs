@@ -8,9 +8,13 @@ public class Soldiers : MonoBehaviour
     public float speed, maxDistance, minDistance, heroDistance;
     bool retreat;
     private Transform heroPos;
+    private Hero scriptWarrior, scriptRanger;
 
     void Start()
     {
+        scriptWarrior = GameObject.FindGameObjectWithTag("WarriorHero").GetComponent<Hero>();
+        scriptRanger = GameObject.FindGameObjectWithTag("RangeHero").GetComponent<Hero>();
+
         HP = maxHP;
         switch (id) {
             case 1:
@@ -30,6 +34,27 @@ public class Soldiers : MonoBehaviour
     {
         heroDistance = Vector2.Distance(transform.position, heroPos.position);
         Movement();
+
+        if(HP <= 0) {
+            Destroy(gameObject);
+        }
+
+        switch (id) {
+            case 1:
+                if(scriptRanger.HP <= 0) {
+                    scriptRanger.soldiers--;
+                    Debug.Log("Soldiers: " + scriptRanger.soldiers);
+                    Destroy(gameObject);                    
+                }
+                break;
+            case 2:
+                if (scriptWarrior.HP <= 0) {
+                    scriptWarrior.soldiers--;
+                    Debug.Log("Soldiers: " + scriptWarrior.soldiers);
+                    Destroy(gameObject);
+                }
+                break;
+        }
     }
 
     void Movement() {
@@ -38,11 +63,5 @@ public class Soldiers : MonoBehaviour
             } else if (heroDistance < minDistance) {
                 transform.position = Vector2.MoveTowards(transform.position, heroPos.position, -speed * Time.deltaTime);
             }        
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("EnemyLeader") || other.CompareTag("Enemy")) {
-            HP--;
-        }
     }
 }

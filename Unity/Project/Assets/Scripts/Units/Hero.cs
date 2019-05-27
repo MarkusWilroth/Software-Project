@@ -75,7 +75,6 @@ public class Hero : MonoBehaviour {
     }
     public void TakeDamage(int damage) {
         HP -= damage;
-        Debug.Log("Damage taken! HP: "+HP);
     }
 
     void Recruit() {

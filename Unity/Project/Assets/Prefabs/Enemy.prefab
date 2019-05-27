@@ -108,6 +108,7 @@ MonoBehaviour:
   warriorHeroDistance: 0
   rangeHeroDistance: 0
   castleDistance: 0
+  soldierDistance: 0
   inRange: 0
   attackTimer: 0
 --- !u!58 &-3751691707624179913
@@ -120,7 +121,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.05, y: 0}
