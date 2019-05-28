@@ -6,19 +6,20 @@ public class EnemyLeader : MonoBehaviour {
 
     public int maxHP, HP, armour, damage, maxEnemies, enemies, enemiesLvl, range, outOfGame;
     public float speed, minDistance, attackDistance;
-    public float warriorHeroDistance, rangeHeroDistance, castleDistance, soldierDistance, inRange, attackTimer;
-    private Castle castle;
+    public float warriorDist, rangeDist, castleDist, soldierDist, inRange, attackTimer;
+    private Castle scriptCastle;
     private Hero scriptWarrior, scriptRanger;
-    private Transform castlePos, warriorHeroPos, rangeHeroPos, soldierPos;
+    private Transform castlePos, warriorHeroPos, rangeHeroPos, soldierPos, targetPos;
     private Spawner spawner;
-    private Soldiers soldier;
-    GameObject warriorO, ranger, tower, soldierO;
+    private Soldiers scriptSoldier;
+    private HealthManager scriptHP;
+    GameObject warriorO, rangerO, towerO, soldierO, castleO;
     private GameObject[] soldiersO;
 
     void Start() {
         HP = maxHP;
         outOfGame = 100000;
-        castle = GetComponent<Castle>();
+        
         spawner = GetComponent<Spawner>();
 
     }
@@ -27,20 +28,8 @@ public class EnemyLeader : MonoBehaviour {
         Variables();
         attackTimer--;
         //scriptWarrior.TakeDamage(damage);
-        
 
-        if (rangeHeroDistance < attackDistance || warriorHeroDistance < attackDistance || soldierDistance < attackDistance) {
-            if(rangeHeroDistance <= warriorHeroDistance && rangeHeroDistance <= soldierDistance) {
-                AttackRangeEnemy();
-            } else if (warriorHeroDistance <= soldierDistance){
-                AttackWarriorEnemy();
-            } 
-            else {
-                AttackSoldierEnemy();
-            }
-        } else {
-            AttackCastle();
-        }
+        GetClosestTarget();
         
         if (enemies < maxEnemies) {
             spawner.SpawnEnemy();
@@ -48,7 +37,7 @@ public class EnemyLeader : MonoBehaviour {
             Spawn();
         }
         if (HP <= 0) {
-            Debug.Log("Enemy Dead");
+            //Debug.Log("Enemy Dead");
             Destroy(gameObject);
         }
         //Funderar på om det inte är bäst att ha alla fiender i ett o samma script... vi får kolla på tutorials vad som är bäst
@@ -56,30 +45,37 @@ public class EnemyLeader : MonoBehaviour {
 
     void Variables() {
         if (warriorHeroPos == null) {
-            warriorHeroDistance = outOfGame;
+            warriorDist = outOfGame;
         }
         if (rangeHeroPos == null) {
-            rangeHeroDistance = outOfGame;
+            rangeDist = outOfGame;
         }
         if (soldierPos == null) {
-            soldierDistance = outOfGame;
+            soldierDist = outOfGame;
         }
 
-        soldierO = GetClosest();
-        warriorHeroPos = GameObject.FindGameObjectWithTag("WarriorHero").transform;
+        soldierO = GetClosestSoldier();
+        warriorO = GameObject.FindGameObjectWithTag("WarriorHero");
+        rangerO = GameObject.FindGameObjectWithTag("RangeHero");
+        castleO = GameObject.FindGameObjectWithTag("Castle");
+
+        warriorHeroPos = warriorO.transform;
         soldierPos = soldierO.transform;
-        rangeHeroPos = GameObject.FindGameObjectWithTag("RangeHero").transform;
-        castlePos = GameObject.FindGameObjectWithTag("Castle").transform;
-        castleDistance = Vector2.Distance(transform.position, castlePos.position);
-        soldierDistance = Vector2.Distance(transform.position, soldierPos.position);
-        warriorHeroDistance = Vector2.Distance(transform.position, warriorHeroPos.position);
-        rangeHeroDistance = Vector2.Distance(transform.position, rangeHeroPos.position);
-        scriptWarrior = GameObject.FindGameObjectWithTag("WarriorHero").GetComponent<Hero>();
-        scriptRanger = GameObject.FindGameObjectWithTag("RangeHero").GetComponent<Hero>();
-        soldier = soldierO.GetComponent<Soldiers>();        
-        
+        rangeHeroPos = rangerO.transform;
+        castlePos = castleO.transform;
+
+        castleDist = Vector2.Distance(transform.position, castlePos.position);
+        soldierDist = Vector2.Distance(transform.position, soldierPos.position);
+        warriorDist = Vector2.Distance(transform.position, warriorHeroPos.position);
+        rangeDist = Vector2.Distance(transform.position, rangeHeroPos.position);
+
+        scriptWarrior = warriorO.GetComponent<Hero>();
+        scriptRanger = rangerO.GetComponent<Hero>();
+        scriptSoldier = soldierO.GetComponent<Soldiers>();
+        scriptCastle = castleO.GetComponent<Castle>();
     }
-    GameObject GetClosest() {
+
+    GameObject GetClosestSoldier() {
         soldiersO = GameObject.FindGameObjectsWithTag("Soldier");
         GameObject closest = null;
         float distance = Mathf.Infinity;
@@ -95,12 +91,47 @@ public class EnemyLeader : MonoBehaviour {
 
         return closest;
     }
+    void GetClosestTarget() {
+        GameObject target = null;
+        float dist;
+
+        if (rangeDist <= warriorDist && rangeDist <= soldierDist) {
+            dist = rangeDist;
+            target = rangerO;
+        } 
+        else if (warriorDist <= soldierDist) {
+            dist = warriorDist;
+            target = warriorO;
+        } 
+        else {
+            dist = soldierDist;
+            target = soldierO;
+        }
+        if (dist > attackDistance) {
+            dist = castleDist;
+            target = castleO;
+        }
+        
+        targetPos = target.transform;
+        scriptHP = target.GetComponent<HealthManager>();
+        Attack(target, targetPos, dist, scriptHP);
+    }
 
     #region Attack
+
+    void Attack(GameObject target, Transform pos, float dist, HealthManager scriptHP) {
+        transform.position = Vector2.MoveTowards(transform.position, pos.position, speed * Time.deltaTime);
+        if (attackTimer <= 0 && dist <= range) {
+            scriptHP.hp -= damage;
+            HP--;
+            attackTimer = 60;
+        }
+    }
+
     void AttackRangeEnemy() {
         transform.position = Vector2.MoveTowards(transform.position, rangeHeroPos.position, speed * Time.deltaTime);
-        if(attackTimer <= 0 && rangeHeroDistance <= range) {
-            scriptWarrior.HP -= damage;
+        if(attackTimer <= 0 && rangeDist <= range) {
+            scriptRanger.HP -= damage;
             HP--;
             attackTimer = 60;
         }
@@ -108,8 +139,8 @@ public class EnemyLeader : MonoBehaviour {
 
     void AttackWarriorEnemy() {
         transform.position = Vector2.MoveTowards(transform.position, warriorHeroPos.position, speed * Time.deltaTime);
-        if(attackTimer <= 0 && warriorHeroDistance <= range) {
-            scriptRanger.TakeDamage(damage);
+        if(attackTimer <= 0 && warriorDist <= range) {
+            scriptWarrior.HP -= damage;
             HP--;
             attackTimer = 60;
         }
@@ -117,8 +148,8 @@ public class EnemyLeader : MonoBehaviour {
 
     void AttackSoldierEnemy() {
         transform.position = Vector2.MoveTowards(transform.position, soldierPos.position, speed * Time.deltaTime);
-        if(attackTimer <= 0 && soldierDistance <= range) {
-            soldier.HP -= damage;
+        if(attackTimer <= 0 && soldierDist <= range) {
+            scriptSoldier.HP -= damage;
             HP--;
             attackTimer = 60;
         }        
@@ -126,8 +157,8 @@ public class EnemyLeader : MonoBehaviour {
     
     void AttackCastle() {
         transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
-        if(attackTimer <= 0 && castleDistance <= range) {
-            castle.HP -= damage;
+        if(attackTimer <= 0 && castleDist <= range) {
+            scriptCastle.HP -= damage;
             HP--;
             attackTimer = 60;
         }

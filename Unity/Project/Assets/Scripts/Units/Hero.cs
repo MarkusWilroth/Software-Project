@@ -37,12 +37,13 @@ public class Hero : MonoBehaviour {
         //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
         castlePos = GameObject.FindGameObjectWithTag("Castle").transform;
         heroPos = GameObject.FindGameObjectWithTag("Hero").transform;
+        //Debug.Log("This hero is updated! " + id);
     }
 
     void Update() {
         respawnTimer--;
         if(alive) {
-            Debug.Log("This hero is updated! " + id);
+            
             if (soldiers < maxSoldiers) {
                 Recruit();
             }
@@ -80,7 +81,7 @@ public class Hero : MonoBehaviour {
         activated = false;
     }
 
-    void Recruit() {
+    void Recruit() { //Ska vi göra detta utan id tror jag det behöver vara soldier scriptet som kollar hur många soldater varje hero har och om det finns plats för fler soldater spawnar den den typ det plats för
         recruit.RecruitSoldier(id, vecPos);
         soldiers++;
     }

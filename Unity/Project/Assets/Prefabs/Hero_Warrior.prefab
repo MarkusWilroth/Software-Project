@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4209362389488953739}
   - component: {fileID: 7452871847682927134}
   - component: {fileID: -8407152527370855316}
+  - component: {fileID: 4894837684743524576}
   m_Layer: 0
   m_Name: Hero_Warrior
   m_TagString: WarriorHero
@@ -91,7 +92,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8399032799516112155}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b21e91c3befa2994699e9b548d9c04db, type: 3}
   m_Name: 
@@ -108,7 +109,7 @@ MonoBehaviour:
   speed: 5
   id: 2
   respawnTimer: 0
-  active: 0
+  activated: 0
   point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
 --- !u!114 &7002057622122529246
 MonoBehaviour:
@@ -177,3 +178,18 @@ MonoBehaviour:
   ranger: {fileID: 1072776906524616894, guid: d0582641ab7deb74b9b0d9ea61d1ccac, type: 3}
   swordsman: {fileID: 5491092165501036306, guid: 02545208e6478944bbe670fd0d77a480,
     type: 3}
+--- !u!114 &4894837684743524576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8399032799516112155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a881c460ea069041858ac5a8164a608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 40
+  maxHP: 40
+  prefab: {fileID: 8399032799516112155}
