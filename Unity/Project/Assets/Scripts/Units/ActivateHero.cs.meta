@@ -3,7 +3,12 @@ guid: 7610f37787b87ea4d97402766ce02377
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rangeHero: {fileID: 1321268313651732403, guid: 8ac00b03a22231946bba7cda5f53f987,
+      type: 3}
+  - warriorHero: {fileID: 8399032799516112155, guid: 10b59c585e15881449c9b4949c586553,
+      type: 3}
+  - heroManager: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

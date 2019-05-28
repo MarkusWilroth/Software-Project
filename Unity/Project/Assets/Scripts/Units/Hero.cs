@@ -10,7 +10,7 @@ public class Hero : MonoBehaviour {
     //}  Inte säker på att vi ska använda states?
 
     public int maxHP, HP, armour, damage, soldiers, maxSoldiers, soldiersLvl, Exp, range, speed, id, respawnTimer;
-    public bool active;
+    public bool activated;
     private bool unlocks, traits, weapon, gatherTroops, inRange, move, alive;
     private Ray ray;
     private Vector2 vecPos;
@@ -44,11 +44,7 @@ public class Hero : MonoBehaviour {
         //if (!active && Input.GetKeyDown(id.ToString())) {
         //    //active = true; //endast när heron är aktiv kan han få en punkt att gå till, han ska fortfarande kunna gå
         //}
-        if (active) {
-            //if (Input.GetKeyDown("space")) {
-            //    //active = false;
-            //}
-
+        if (activated) {
             if (Input.GetMouseButtonDown(0)) {
                 movement.ChangeTarget();
             }
@@ -76,6 +72,12 @@ public class Hero : MonoBehaviour {
 
     public void TakeDamage(int damage) {
         HP -= damage;
+    }
+    public void MakeActive() {
+        activated = true;
+    }
+    public void DeActivate() {
+        activated = false;
     }
 
     void Recruit() {

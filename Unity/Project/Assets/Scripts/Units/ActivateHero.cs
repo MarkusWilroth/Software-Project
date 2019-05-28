@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class ActivateHero : MonoBehaviour {
 
-    public GameObject rangeHero, warriorHero, heroManager;
+    public GameObject rangeHero, warriorHero;
 
     public void Activate(int id) {
-        rangeHero = heroManager.FindComponentInChildWithTag("RangeHero");
-        warriorHero = heroManager.FindComponentInChildWithTag("WarriorHero");
+        rangeHero = GameObject.FindGameObjectWithTag("RangeHero");
+        warriorHero = GameObject.FindGameObjectWithTag("WarriorHero");
+
 
         switch (id) {
             case 1:
-                rangeHero.active = true;
-                warriorHero.active = false;
+                rangeHero.MakeActive();
+                warriorHero.DeActivate();
                 break;
             case 2:
-                rangeHero.active = false;
-                warriorHero.active = true;
+                rangeHero.DeActivate();
+                warriorHero.MakeActive();
                 break;
         }
 
