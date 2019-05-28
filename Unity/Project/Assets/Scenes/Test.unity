@@ -15650,7 +15650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panSpeed: 20
   panBorderThickness: 5
-  panLimit: {x: 10.5, y: 15}
+  panLimit: {x: 6.8, y: 14}
   scrollSpeed: 8
   minY: -40
   maxY: -5
@@ -15874,8 +15874,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -485.2, y: -123.6}
-  m_SizeDelta: {x: 160, y: 72.2}
+  m_AnchoredPosition: {x: -576, y: -139}
+  m_SizeDelta: {x: 140, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &952090127
 MonoBehaviour:
@@ -16301,11 +16301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7610f37787b87ea4d97402766ce02377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeHero: {fileID: 1321268313651732403, guid: 8ac00b03a22231946bba7cda5f53f987,
-    type: 3}
-  warriorHero: {fileID: 8399032799516112155, guid: 10b59c585e15881449c9b4949c586553,
-    type: 3}
-  heroManager: {fileID: 0}
+  rangeHero: {fileID: 0}
+  warriorHero: {fileID: 0}
 --- !u!1 &1222674937
 GameObject:
   m_ObjectHideFlags: 0
@@ -16645,8 +16642,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -485.2, y: -214}
-  m_SizeDelta: {x: 160, y: 72.2}
+  m_AnchoredPosition: {x: -576, y: -222}
+  m_SizeDelta: {x: 140, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2092148626
 MonoBehaviour:

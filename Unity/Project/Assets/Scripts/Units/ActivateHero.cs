@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ActivateHero : MonoBehaviour {
 
-    public GameObject rangeHero, warriorHero;
+    //public GameObject rangeHero, warriorHero;
+    public Hero rangeHero, warriorHero;
 
     public void Activate(int id) { //Får in värde 1 eller 2 beroende på vilken knapp man klickar på
-        rangeHero = GameObject.FindGameObjectWithTag("RangeHero"); //Borde inte vara annorlund än hur vi gör detta i EnemyLeader, hade tänkt att detta skulle vara en sorts FindChild men hittade ingen sådan
-        warriorHero = GameObject.FindGameObjectWithTag("WarriorHero");
+        rangeHero = GameObject.FindGameObjectWithTag("RangeHero").GetComponent<Hero>(); //Borde inte vara annorlund än hur vi gör detta i EnemyLeader, hade tänkt att detta skulle vara en sorts FindChild men hittade ingen sådan
+        warriorHero = GameObject.FindGameObjectWithTag("WarriorHero").GetComponent<Hero>();
+
 
 
         switch (id) {

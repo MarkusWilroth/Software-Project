@@ -64,6 +64,7 @@ public class EnemyLeader : MonoBehaviour {
         if (soldierPos == null) {
             soldierDistance = outOfGame;
         }
+
         soldierO = GetClosest();
         warriorHeroPos = GameObject.FindGameObjectWithTag("WarriorHero").transform;
         soldierPos = soldierO.transform;

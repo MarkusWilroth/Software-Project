@@ -43,14 +43,12 @@ public class Soldiers : MonoBehaviour
             case 1:
                 if(scriptRanger.HP <= 0) {
                     scriptRanger.soldiers--;
-                    Debug.Log("Soldiers: " + scriptRanger.soldiers);
                     Destroy(gameObject);                    
                 }
                 break;
             case 2:
                 if (scriptWarrior.HP <= 0) {
                     scriptWarrior.soldiers--;
-                    Debug.Log("Soldiers: " + scriptWarrior.soldiers);
                     Destroy(gameObject);
                 }
                 break;
