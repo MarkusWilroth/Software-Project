@@ -9,11 +9,9 @@ public class SoldierSpawn : MonoBehaviour {
         switch (id) {
             case 1:
                 Instantiate(ranger, heroPos, Quaternion.identity);
-                Debug.Log("Spawn Soldier: " + id);
                 break;
             case 2:
                 Instantiate(swordsman, heroPos, Quaternion.identity);
-                Debug.Log("Spawn Soldier: " + id);
                 break;
         }
     }

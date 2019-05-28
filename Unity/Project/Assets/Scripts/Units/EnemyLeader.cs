@@ -108,75 +108,103 @@ public class EnemyLeader : MonoBehaviour {
         GameObject target = null;
         float dist;
 
-        if (rangeDist <= warriorDist && rangeDist <= soldierDist) {
-            dist = rangeDist;
-            target = rangerO;
-        } 
-        else if (warriorDist <= soldierDist) {
-            dist = warriorDist;
-            target = warriorO;
-        } 
-        else {
-            dist = soldierDist;
-            target = soldierO;
+        if(rangeDist < attackDistance || warriorDist < attackDistance || soldierDist < attackDistance) {
+            if (rangeDist <= warriorDist && rangeDist <= soldierDist) {
+                dist = rangeDist;
+                target = rangerO;
+                AttackHero(dist, scriptRanger);
+            } else if (warriorDist <= soldierDist) {
+                dist = warriorDist;
+                target = warriorO;
+                AttackHero(dist, scriptWarrior);
+            } else {
+                dist = soldierDist;
+                target = soldierO;
+                AttackSoldier(dist);
+            }
         }
-        if (dist > attackDistance) {
+        else {
             dist = castleDist;
             target = castleO;
+            AttackBuilding(dist, scriptCastle);
         }
         
         targetPos = target.transform;
         scriptHP = target.GetComponent<HealthManager>();
-        Attack(target, targetPos, dist, scriptHP);
+        TargetPos(targetPos);
     }
     #endregion
 
     #region Attack
-
-    void Attack(GameObject target, Transform pos, float dist, HealthManager scriptHP) {
+    void TargetPos(Transform pos) {
         transform.position = Vector2.MoveTowards(transform.position, pos.position, speed * Time.deltaTime);
+    }
+
+    void AttackHero(float dist, Hero scriptHero) {
         if (attackTimer <= 0 && dist <= range) {
-            scriptHP.hp -= damage;
+            scriptHero.HP -= damage;
             HP--;
             attackTimer = 60;
         }
     }
-
-    void AttackRangeEnemy() {
-        transform.position = Vector2.MoveTowards(transform.position, rangeHeroPos.position, speed * Time.deltaTime);
-        if(attackTimer <= 0 && rangeDist <= range) {
-            scriptRanger.HP -= damage;
-            HP--;
-            attackTimer = 60;
-        }
-    }
-
-    void AttackWarriorEnemy() {
-        transform.position = Vector2.MoveTowards(transform.position, warriorHeroPos.position, speed * Time.deltaTime);
-        if(attackTimer <= 0 && warriorDist <= range) {
-            scriptWarrior.HP -= damage;
-            HP--;
-            attackTimer = 60;
-        }
-    }
-
-    void AttackSoldierEnemy() {
-        transform.position = Vector2.MoveTowards(transform.position, soldierPos.position, speed * Time.deltaTime);
-        if(attackTimer <= 0 && soldierDist <= range) {
+    void AttackSoldier(float dist) {
+        if (attackTimer <= 0 && dist <= range) {
             scriptSoldier.HP -= damage;
             HP--;
             attackTimer = 60;
-        }        
+        }
     }
-    
-    void AttackCastle() {
-        transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
-        if(attackTimer <= 0 && castleDist <= range) {
+    void AttackBuilding(float dist, Castle scriptCastle) { //Tycker vi ändrar namnet på denna script till building och så tower = castle fast mindre hp och man förlorar inte om de går sönder
+        if (attackTimer <= 0 && dist <= range) {
             scriptCastle.HP -= damage;
             HP--;
             attackTimer = 60;
         }
     }
+
+    //void Attack(GameObject target, Transform pos, float dist, HealthManager scriptHP) {
+        
+    //    if (attackTimer <= 0 && dist <= range) {
+    //        scriptHP.hp -= damage;
+    //        HP--;
+    //        attackTimer = 60;
+    //    }
+    //}
+
+    //void AttackRangeEnemy() {
+    //    if(attackTimer <= 0 && rangeDist <= range) {
+    //        scriptRanger.HP -= damage;
+    //        HP--;
+    //        attackTimer = 60;
+    //    }
+    //}
+
+    //void AttackWarriorEnemy() {
+    //    transform.position = Vector2.MoveTowards(transform.position, warriorHeroPos.position, speed * Time.deltaTime);
+    //    if(attackTimer <= 0 && warriorDist <= range) {
+    //        scriptWarrior.HP -= damage;
+    //        HP--;
+    //        attackTimer = 60;
+    //    }
+    //}
+
+    //void AttackSoldierEnemy() {
+    //    transform.position = Vector2.MoveTowards(transform.position, soldierPos.position, speed * Time.deltaTime);
+    //    if(attackTimer <= 0 && soldierDist <= range) {
+    //        scriptSoldier.HP -= damage;
+    //        HP--;
+    //        attackTimer = 60;
+    //    }        
+    //}
+    
+    //void AttackCastle() {
+    //    transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
+    //    if(attackTimer <= 0 && castleDist <= range) {
+    //        scriptCastle.HP -= damage;
+    //        HP--;
+    //        attackTimer = 60;
+    //    }
+    //}
     #endregion
 
     void Spawn() {
