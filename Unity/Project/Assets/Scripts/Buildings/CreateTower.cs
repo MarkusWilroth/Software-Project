@@ -14,11 +14,11 @@ public class CreateTower : MonoBehaviour {
     void Update() {
         if(building) {
             if (Input.GetMouseButtonDown(0)) {
-                Debug.Log("Tower Building!");
+                Debug.Log("Tower Building!"); //Detta debuggas
                 //tranBuild.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 towerO = Instantiate(tower, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as GameObject;
                 towerO.transform.parent = GameObject.Find("BuildingManager").transform;
-                Debug.Log("Did it get here?");
+                Debug.Log("Did it get here?"); //Detta debuggas inte....
                 building = false;
             }
             if (Input.GetMouseButtonDown(1)) { //höger musknapp?
@@ -28,3 +28,6 @@ public class CreateTower : MonoBehaviour {
     }
 
 }
+/* Den hoppar ut ut scriptet vid rad 19 eller 20... tror det har med Camera.main.ScreenToWorldPoint(Input.mousePosition) att göra... såg att man kunde
+ * göra transform.position = Camera.main.ScreenToWorldPont(Input.mousePosition) men det blev konstigt.. kan du kolla på det?
+*/
