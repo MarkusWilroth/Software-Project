@@ -18,6 +18,7 @@ public class CreateTower : MonoBehaviour {
                 //tranBuild.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 towerO = Instantiate(tower, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as GameObject;
                 towerO.transform.parent = GameObject.Find("BuildingManager").transform;
+                Debug.Log("Did it get here?");
                 building = false;
             }
             if (Input.GetMouseButtonDown(1)) { //höger musknapp?
