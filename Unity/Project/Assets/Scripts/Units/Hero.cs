@@ -27,6 +27,7 @@ public class Hero : MonoBehaviour {
         movement = GetComponent<Movement>();
         enemyLeader = GetComponent<EnemyLeader>();
         gatherTroops = false;
+        activated = false;
         alive = true;
 
         cam = new Camera();
@@ -39,35 +40,34 @@ public class Hero : MonoBehaviour {
     }
 
     void Update() {
-        //Debug.Log(active);
         respawnTimer--;
-        //if (!active && Input.GetKeyDown(id.ToString())) {
-        //    //active = true; //endast när heron är aktiv kan han få en punkt att gå till, han ska fortfarande kunna gå
-        //}
-        if (activated) {
-            if (Input.GetMouseButtonDown(0)) {
-                movement.ChangeTarget();
+        if(alive) {
+            Debug.Log("This hero is updated! " + id);
+            if (soldiers < maxSoldiers) {
+                Recruit();
+            }
+            if (HP <= 0) {
+                alive = false;
+                respawnTimer = 600;
+                transform.position = new Vector2(0, 0);
+            }
+            if (activated) {
+                if (Input.GetMouseButtonDown(0)) {
+                    movement.ChangeTarget();
+                }
             }
         }
-
-        if (soldiers < maxSoldiers) {
-            Recruit();
-        }
-        if (HP <= 0 && alive) {
-            alive = false;
-            respawnTimer = 600;
-            //gameObject.SetActive(false);
-            transform.position = new Vector2(0, 0);
-        }
+        
         if (!(alive) && respawnTimer <= 0) {
             Respawn();
         }
-        //Debug.Log("Hero HP: " + HP + "Hero ID: "+id);
+        
 
         if (gatherTroops && Vector2.Distance(transform.position, castlePos.position) > 2) { //Kan vara ett bra sätt att samla sina heros och soldiers //Är detta meningen att det ska vara här man skapar sina soldater?
             //transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
         }
         vecPos = new Vector2(heroPos.position.x, heroPos.position.y);
+
     }
 
     public void TakeDamage(int damage) {
