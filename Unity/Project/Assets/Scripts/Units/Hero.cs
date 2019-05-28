@@ -42,8 +42,7 @@ public class Hero : MonoBehaviour {
 
     void Update() {
         respawnTimer--;
-        if(alive) {
-            
+        if(alive) {            
             if (soldiers < maxSoldiers) {
                 Recruit();
             }
@@ -61,14 +60,12 @@ public class Hero : MonoBehaviour {
         
         if (!(alive) && respawnTimer <= 0) {
             Respawn();
-        }
-        
+        }        
 
         if (gatherTroops && Vector2.Distance(transform.position, castlePos.position) > 2) { //Kan vara ett bra sätt att samla sina heros och soldiers //Är detta meningen att det ska vara här man skapar sina soldater?
             //transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
         }
         vecPos = new Vector2(heroPos.position.x, heroPos.position.y);
-
     }
 
     public void TakeDamage(int damage) {

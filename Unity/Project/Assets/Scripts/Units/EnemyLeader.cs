@@ -7,6 +7,7 @@ public class EnemyLeader : MonoBehaviour {
     public int maxHP, HP, armour, damage, maxEnemies, enemies, enemiesLvl, range, outOfGame;
     public float speed, minDistance, attackDistance;
     public float warriorDist, rangeDist, castleDist, soldierDist, inRange, attackTimer;
+    private bool alive;
     private Castle scriptCastle;
     private Hero scriptWarrior, scriptRanger;
     private Transform castlePos, warriorHeroPos, rangeHeroPos, soldierPos, targetPos;
@@ -28,19 +29,29 @@ public class EnemyLeader : MonoBehaviour {
         Variables();
         attackTimer--;
         //scriptWarrior.TakeDamage(damage);
-
+        if (alive) {
+            if (enemies < maxEnemies) {
+                spawner.SpawnEnemy();
+                enemies++;
+                Spawn();
+            }
+            if(HP <= 0) {
+                alive = false;
+                Destroy(gameObject);
+            }
+        }
         GetClosestTarget();
         
-        if (enemies < maxEnemies) {
-            spawner.SpawnEnemy();
-            //enemies++;
-            Spawn();
-        }
+        
         if (HP <= 0) {
             //Debug.Log("Enemy Dead");
             Destroy(gameObject);
         }
         //Funderar på om det inte är bäst att ha alla fiender i ett o samma script... vi får kolla på tutorials vad som är bäst
+    }
+
+    void TakeDamage(int damage) {
+        HP -= damage;
     }
 
     void Variables() {
@@ -75,6 +86,7 @@ public class EnemyLeader : MonoBehaviour {
         scriptCastle = castleO.GetComponent<Castle>();
     }
 
+    #region Target
     GameObject GetClosestSoldier() {
         soldiersO = GameObject.FindGameObjectsWithTag("Soldier");
         GameObject closest = null;
@@ -91,6 +103,7 @@ public class EnemyLeader : MonoBehaviour {
 
         return closest;
     }
+
     void GetClosestTarget() {
         GameObject target = null;
         float dist;
@@ -116,6 +129,7 @@ public class EnemyLeader : MonoBehaviour {
         scriptHP = target.GetComponent<HealthManager>();
         Attack(target, targetPos, dist, scriptHP);
     }
+    #endregion
 
     #region Attack
 
@@ -164,6 +178,7 @@ public class EnemyLeader : MonoBehaviour {
         }
     }
     #endregion
+
     void Spawn() {
         //spawner.SpawnEnemy();
         //enemies++;
