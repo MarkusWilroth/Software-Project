@@ -5,7 +5,7 @@ using UnityEngine;
 public class ArrowProjectile : MonoBehaviour
 {
     Vector2 target;
-    public float speed, distance;
+    public float speed;
     public GameObject enemyLeader;
     public Transform enemy;
 

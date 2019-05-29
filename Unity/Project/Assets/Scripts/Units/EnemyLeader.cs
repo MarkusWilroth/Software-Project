@@ -162,8 +162,15 @@ public class EnemyLeader : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Arrow")) {
+            HP--;
+            Destroy(other.gameObject);
+        }
+    }
+
     //void Attack(GameObject target, Transform pos, float dist, HealthManager scriptHP) {
-        
+
     //    if (attackTimer <= 0 && dist <= range) {
     //        scriptHP.hp -= damage;
     //        HP--;
@@ -196,7 +203,7 @@ public class EnemyLeader : MonoBehaviour {
     //        attackTimer = 60;
     //    }        
     //}
-    
+
     //void AttackCastle() {
     //    transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
     //    if(attackTimer <= 0 && castleDist <= range) {

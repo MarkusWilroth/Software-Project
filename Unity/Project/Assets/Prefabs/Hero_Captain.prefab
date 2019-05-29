@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1660470243600307053}
   - component: {fileID: 2900916962824380239}
   - component: {fileID: -974746402278442949}
+  - component: {fileID: 4542617854881633714}
   m_Layer: 0
   m_Name: Hero_Captain
   m_TagString: RangeHero
@@ -109,8 +110,11 @@ MonoBehaviour:
   speed: 4
   id: 1
   respawnTimer: 0
+  reload: 0
   activated: 0
   point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
+  arrowProjectile: {fileID: 773333418882430270, guid: e7e54a832b26a084791811325db68dc4,
+    type: 3}
 --- !u!114 &3866839642334336037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,3 +197,19 @@ MonoBehaviour:
   hp: 40
   maxHP: 40
   prefab: {fileID: 1321268313651732403}
+--- !u!114 &4542617854881633714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321268313651732403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fa082ba580e3f4d9eed46679c5ea39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  enemyLeader: {fileID: 5857370381840239562, guid: 56cd87c93b4152947a1640be6eec3b18,
+    type: 3}
+  enemy: {fileID: 1965418444112674161, guid: 9950bb5fad22e4d4693d45481dfe7879, type: 3}

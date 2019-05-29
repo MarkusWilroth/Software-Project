@@ -9,7 +9,7 @@ public class Hero : MonoBehaviour {
     //    retreat
     //}  Inte säker på att vi ska använda states?
 
-    public int maxHP, HP, armour, damage, soldiers, maxSoldiers, soldiersLvl, Exp, range, speed, id, respawnTimer;
+    public int maxHP, HP, armour, damage, soldiers, maxSoldiers, soldiersLvl, Exp, range, speed, id, respawnTimer, reload;
     public bool activated;
     private bool unlocks, traits, weapon, gatherTroops, inRange, move, alive;
     private Ray ray;
@@ -19,8 +19,8 @@ public class Hero : MonoBehaviour {
     private EnemyLeader enemyLeader;
     private Camera cam;
     private Movement movement;
-    private Transform heroPos, castlePos;
-    public GameObject point;
+    private Transform heroPos, castlePos, enemyPos;
+    public GameObject point, arrowProjectile;
 
     void Start() {
         recruit = GetComponent<SoldierSpawn>();
@@ -42,7 +42,10 @@ public class Hero : MonoBehaviour {
 
     void Update() {
         respawnTimer--;
-        if(alive) {            
+        reload--;
+        enemyPos = GameObject.FindGameObjectWithTag("EnemyLeader").transform;
+        inRange = Vector2.Distance(transform.position, enemyPos.position) < range;
+        if (alive) {            
             if (soldiers < maxSoldiers) {
                 Recruit();
             }
@@ -56,6 +59,17 @@ public class Hero : MonoBehaviour {
                     movement.ChangeTarget();
                 }
             }
+        }
+
+        switch (id) {
+            case 1:
+                if (inRange && reload == 0) {
+                    Instantiate(arrowProjectile, transform.position, Quaternion.identity);
+                    reload = 60;
+                }
+                break;
+            case 2:
+                break;
         }
         
         if (!(alive) && respawnTimer <= 0) {
@@ -77,6 +91,8 @@ public class Hero : MonoBehaviour {
     public void DeActivate() {
         activated = false;
     }
+
+
 
     void Recruit() { //Ska vi göra detta utan id tror jag det behöver vara soldier scriptet som kollar hur många soldater varje hero har och om det finns plats för fler soldater spawnar den den typ det plats för
         recruit.RecruitSoldier(id, vecPos);

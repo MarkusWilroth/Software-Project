@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Soldiers : MonoBehaviour
 {
-    public int weapon, soldierLvl, HP, maxHP, id;
-    public float speed, maxDistance, minDistance, heroDistance;
-    bool retreat;
-    private Transform heroPos;
+    public int weapon, soldierLvl, HP, maxHP, id, range;
+    public float speed, maxDistance, minDistance, heroDistance, reload;
+    bool retreat, inRange;
+    private Transform heroPos, enemyPos;
     private Hero scriptWarrior, scriptRanger;
+    public GameObject arrowProjectile;
 
     void Start()
-    {
+    {        
         scriptWarrior = GameObject.FindGameObjectWithTag("WarriorHero").GetComponent<Hero>();
         scriptRanger = GameObject.FindGameObjectWithTag("RangeHero").GetComponent<Hero>();
 
@@ -19,6 +20,7 @@ public class Soldiers : MonoBehaviour
         switch (id) {
             case 1:
                 heroPos = GameObject.FindGameObjectWithTag("RangeHero").transform;
+                enemyPos = GameObject.FindGameObjectWithTag("EnemyLeader").transform;
                 break;
             case 2:
                 heroPos = GameObject.FindGameObjectWithTag("WarriorHero").transform;
@@ -32,8 +34,10 @@ public class Soldiers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        inRange = Vector2.Distance(transform.position, enemyPos.position) < range;
         heroDistance = Vector2.Distance(transform.position, heroPos.position);
         Movement();
+        reload--;
 
         if(HP <= 0) {
             Destroy(gameObject);
@@ -51,6 +55,17 @@ public class Soldiers : MonoBehaviour
                     scriptWarrior.soldiers--;
                     Destroy(gameObject);
                 }
+                break;
+        }
+
+        switch (id) {
+            case 1:
+                if(inRange && reload == 0) {
+                    Instantiate(arrowProjectile, transform.position, Quaternion.identity);
+                    reload = 60;
+                }
+                break;
+            case 2:
                 break;
         }
     }
