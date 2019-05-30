@@ -16114,7 +16114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570999479}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.24000001, y: -2.56, z: 0}
+  m_LocalPosition: {x: -0.37, y: -3.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1032235918}
@@ -16213,7 +16213,7 @@ MonoBehaviour:
   - {fileID: 1222674938}
   - {fileID: 1012423287}
   - {fileID: 698201623}
-  startTimeBtwSpawns: 1
+  startTimeBtwSpawns: 1000
 --- !u!1 &837976469
 GameObject:
   m_ObjectHideFlags: 0
@@ -16568,9 +16568,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85635f7c723a02b43bd7af0d80fb69b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  captain: {fileID: 1321268313651732403, guid: 8ac00b03a22231946bba7cda5f53f987, type: 3}
+  captain: {fileID: 0}
   captainO: {fileID: 0}
-  warrior: {fileID: 8399032799516112155, guid: 10b59c585e15881449c9b4949c586553, type: 3}
+  warrior: {fileID: 0}
   warriorO: {fileID: 0}
   spawnSpots:
   - {fileID: 570999480}
