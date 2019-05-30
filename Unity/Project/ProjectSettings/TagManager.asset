@@ -12,6 +12,8 @@ TagManager:
   - ArcherTower
   - RangeHero
   - WarriorHero
+  - Arrow
+  - lvlManager
   layers:
   - Default
   - TransparentFX

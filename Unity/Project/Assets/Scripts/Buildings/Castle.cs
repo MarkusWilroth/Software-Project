@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Castle : MonoBehaviour {
     public int maxHP = 200;
@@ -18,13 +19,18 @@ public class Castle : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if(Input.GetMouseButtonDown(1)) {
+            HP -= 10;
+        }
+
         if (HP <= 0) {
             GameOver();
         }
     }
 
-    void GameOver () {
-        //Avslutar spelet/leveln
+    public void GameOver() {
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+
     }
 
     public bool Repair() {

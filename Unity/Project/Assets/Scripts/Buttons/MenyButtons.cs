@@ -18,11 +18,8 @@ public class MenyButtons : MonoBehaviour {
 
     public void changeMenuScene(string sceneName) {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-
-        //Scene nextScene = SceneManager.GetSceneByName(sceneName);
-        //Debug.Log("String sceneName: " + sceneName + " Scene nextScene: " + nextScene);
-        //SceneManager.SetActiveScene(nextScene);
     }
+
     public void Help() {
         helpMenu.SetActive(true);
         optionMenu.SetActive(false);
