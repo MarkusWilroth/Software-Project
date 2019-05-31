@@ -98,17 +98,19 @@ MonoBehaviour:
   HP: 5
   armour: 2
   damage: 3
-  maxEnemies: 4
+  maxEnemies: 2
   enemies: 0
   enemiesLvl: 1
   range: 1
+  outOfGame: 0
   speed: 3
   minDistance: 2
   attackDistance: 5
-  warriorHeroDistance: 0
-  rangeHeroDistance: 0
-  castleDistance: 0
-  soldierDistance: 0
+  waveTimer: 0
+  warriorDist: 0
+  rangeDist: 0
+  castleDist: 0
+  soldierDist: 0
   inRange: 0
   attackTimer: 0
 --- !u!58 &-3751691707624179913

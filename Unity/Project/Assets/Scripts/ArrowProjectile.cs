@@ -2,21 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowProjectile : MonoBehaviour
-{
+public class ArrowProjectile : MonoBehaviour {
     Vector2 target;
     public float speed;
     public GameObject enemyLeader;
     public Transform enemy;
 
-    void Start()
-    {
+    void Start() {
         enemy = GameObject.FindGameObjectWithTag("EnemyLeader").transform;
         target = new Vector2(enemy.position.x, enemy.position.y);
     }
 
-    void Update()
-    {
+    void Update() {
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 }

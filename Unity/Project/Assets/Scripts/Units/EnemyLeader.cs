@@ -5,46 +5,51 @@ using UnityEngine;
 public class EnemyLeader : MonoBehaviour {
 
     public int maxHP, HP, armour, damage, maxEnemies, enemies, enemiesLvl, range, outOfGame;
-    public float speed, minDistance, attackDistance;
+    public float speed, minDistance, attackDistance, waveTimer;
     public float warriorDist, rangeDist, castleDist, soldierDist, inRange, attackTimer;
-    private bool alive;
+    private bool alive, isAttacking;
     private Castle scriptCastle;
     private Hero scriptWarrior, scriptRanger;
     private Transform castlePos, warriorHeroPos, rangeHeroPos, soldierPos, targetPos;
     private Spawner spawner;
     private Soldiers scriptSoldier;
     private HealthManager scriptHP;
-    GameObject warriorO, rangerO, towerO, soldierO, castleO;
+    private LevelScript scriptLvl;
+    GameObject warriorO, rangerO, towerO, soldierO, castleO, spawnerO, lvlManagerO;
     private GameObject[] soldiersO;
 
     void Start() {
         HP = maxHP;
         outOfGame = 100000;
-        
-        spawner = GetComponent<Spawner>();
-
+        soldierO = GetClosestSoldier();
+        spawnerO = GameObject.FindGameObjectWithTag("enemySpawn");
+        warriorO = GameObject.FindGameObjectWithTag("WarriorHero");
+        rangerO = GameObject.FindGameObjectWithTag("RangeHero");
+        castleO = GameObject.FindGameObjectWithTag("Castle");
+        lvlManagerO = GameObject.FindGameObjectWithTag("lvlManager");
+        isAttacking = false;
     }
     
     void Update() {
         Variables();
         attackTimer--;
-        //scriptWarrior.TakeDamage(damage);
-        if (alive) {
-            if (enemies < maxEnemies) {
-                spawner.SpawnEnemy();
-                enemies++;
-                Spawn();
-            }
-            if(HP <= 0) {
-                alive = false;
-                Destroy(gameObject);
-            }
+        waveTimer++;
+        if (waveTimer >= 120) {
+            isAttacking = true;
         }
-        GetClosestTarget();
-        
-        
+        if (enemies < maxEnemies) {
+            spawner.SpawnEnemy(transform.position);
+            enemies++;
+            Spawn();
+        }
+        if (isAttacking) {
+            GetClosestTarget();
+        }
+
         if (HP <= 0) {
-            //Debug.Log("Enemy Dead");
+            spawner.activeLeader--;
+            scriptLvl.gold += 10;
+            scriptLvl.score += 5;
             Destroy(gameObject);
         }
         //Funderar på om det inte är bäst att ha alla fiender i ett o samma script... vi får kolla på tutorials vad som är bäst
@@ -65,11 +70,6 @@ public class EnemyLeader : MonoBehaviour {
             soldierDist = outOfGame;
         }
 
-        soldierO = GetClosestSoldier();
-        warriorO = GameObject.FindGameObjectWithTag("WarriorHero");
-        rangerO = GameObject.FindGameObjectWithTag("RangeHero");
-        castleO = GameObject.FindGameObjectWithTag("Castle");
-
         warriorHeroPos = warriorO.transform;
         soldierPos = soldierO.transform;
         rangeHeroPos = rangerO.transform;
@@ -84,6 +84,8 @@ public class EnemyLeader : MonoBehaviour {
         scriptRanger = rangerO.GetComponent<Hero>();
         scriptSoldier = soldierO.GetComponent<Soldiers>();
         scriptCastle = castleO.GetComponent<Castle>();
+        scriptLvl = lvlManagerO.GetComponent<LevelScript>();
+        spawner = spawnerO.GetComponent<Spawner>();
     }
 
     #region Target
@@ -91,16 +93,16 @@ public class EnemyLeader : MonoBehaviour {
         soldiersO = GameObject.FindGameObjectsWithTag("Soldier");
         GameObject closest = null;
         float distance = Mathf.Infinity;
-        //Vector2 position = transform.position;
+
         foreach (GameObject go in soldiersO) {
             Vector2 diff = go.transform.position - transform.position;
             float curDistance = diff.sqrMagnitude;
+
             if (curDistance < distance) {
                 closest = go;
                 distance = curDistance;
             }
         }
-
         return closest;
     }
 
@@ -113,11 +115,13 @@ public class EnemyLeader : MonoBehaviour {
                 dist = rangeDist;
                 target = rangerO;
                 AttackHero(dist, scriptRanger);
-            } else if (warriorDist <= soldierDist) {
+            } 
+            else if (warriorDist <= soldierDist) {
                 dist = warriorDist;
                 target = warriorO;
                 AttackHero(dist, scriptWarrior);
-            } else {
+            } 
+            else {
                 dist = soldierDist;
                 target = soldierO;
                 AttackSoldier(dist);

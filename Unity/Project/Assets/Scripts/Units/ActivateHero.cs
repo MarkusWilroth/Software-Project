@@ -11,8 +11,6 @@ public class ActivateHero : MonoBehaviour {
         rangeHero = GameObject.FindGameObjectWithTag("RangeHero").GetComponent<Hero>(); //Borde inte vara annorlund än hur vi gör detta i EnemyLeader, hade tänkt att detta skulle vara en sorts FindChild men hittade ingen sådan
         warriorHero = GameObject.FindGameObjectWithTag("WarriorHero").GetComponent<Hero>();
 
-
-
         switch (id) {
             case 1: //Om id = 1 så klickade man på ranger knappen och ranger ska bli activerad
                 rangeHero.MakeActive(); //Ska finnas en metod i Hero som ska fixa detta så som vi gör TakeDamage
@@ -25,11 +23,4 @@ public class ActivateHero : MonoBehaviour {
         }
 
     }
-
-    //public static GameObject FindChild(GameObject HeroManager, string tag) {
-    //    Transform t = parent.Transform;
-    //    foreach(Transform tr in t) {
-    //        if ()
-    //    }
-    //}
 }

@@ -4,28 +4,41 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
     public GameObject enemyLeader, enemy;
+    private GameObject enemyLeaderO, enemyO;
     public Transform[] spawnSpots;
+    public int activeLeader, maxLeader;
     private Transform enemyPos;
     private float timeBtwSpawns;
     public float startTimeBtwSpawns;
+    private bool isSpawning;
 
     void Start() {
         timeBtwSpawns = startTimeBtwSpawns;
-        enemyPos = GameObject.FindGameObjectWithTag("Enemy").transform;
+        //enemyPos = GameObject.FindGameObjectWithTag("Enemy").transform;
+        isSpawning = true;
     }
 
-    void Update() {        
-        if (timeBtwSpawns <= 0) {
+    void Update() {
+        if (activeLeader < maxLeader && isSpawning) {
+            activeLeader++;
             int randPos = Random.Range(0, spawnSpots.Length);
-            Instantiate(enemyLeader, spawnSpots[randPos].position, Quaternion.identity);
-            timeBtwSpawns = startTimeBtwSpawns;
-        } else {
-            timeBtwSpawns -= Time.deltaTime;
+            enemyLeaderO = Instantiate(enemyLeader, spawnSpots[randPos].position, Quaternion.identity) as GameObject;
+            enemyLeaderO.transform.parent = GameObject.Find("Spawner").transform;
+            //Instantiate(enemyLeader, spawnSpots[randPos].position, Quaternion.identity);
+            //timeBtwSpawns = startTimeBtwSpawns;
+        } 
+        if(activeLeader == maxLeader) {
+            isSpawning = false;
         }
-        enemyPos = GameObject.FindGameObjectWithTag("Enemy").transform;
+        if(activeLeader <= 0) {
+            isSpawning = true;
+            maxLeader++;
+        }
+        //enemyPos = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
-    
-    public void SpawnEnemy() {
-        Instantiate(enemy, enemyPos.position, Quaternion.identity);
+
+    public void SpawnEnemy(Vector2 enemyPos) {
+        enemyO = Instantiate(enemy, enemyPos, Quaternion.identity) as GameObject;
+        enemyO.transform.parent = GameObject.Find("Spawner").transform;
     }
 }

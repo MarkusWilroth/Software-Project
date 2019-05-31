@@ -11,8 +11,7 @@ public class Soldiers : MonoBehaviour
     private Hero scriptWarrior, scriptRanger;
     public GameObject arrowProjectile;
 
-    void Start()
-    {        
+    void Start() {
         scriptWarrior = GameObject.FindGameObjectWithTag("WarriorHero").GetComponent<Hero>();
         scriptRanger = GameObject.FindGameObjectWithTag("RangeHero").GetComponent<Hero>();
 
@@ -26,28 +25,27 @@ public class Soldiers : MonoBehaviour
                 heroPos = GameObject.FindGameObjectWithTag("WarriorHero").transform;
                 break;
         }
-        
+
         heroDistance = Vector2.Distance(transform.position, heroPos.position);
         ////soldierPos = GameObject.FindGameObjectWithTag("Hero").transform;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        inRange = Vector2.Distance(transform.position, enemyPos.position) < range;
+    void Update() {
+        //inRange = Vector2.Distance(transform.position, enemyPos.position) < range;
         heroDistance = Vector2.Distance(transform.position, heroPos.position);
         Movement();
         reload--;
 
-        if(HP <= 0) {
+        if (HP <= 0) {
             Destroy(gameObject);
         }
 
         switch (id) {
             case 1:
-                if(scriptRanger.HP <= 0) {
+                if (scriptRanger.HP <= 0) {
                     scriptRanger.soldiers--;
-                    Destroy(gameObject);                    
+                    Destroy(gameObject);
                 }
                 break;
             case 2:
@@ -60,7 +58,7 @@ public class Soldiers : MonoBehaviour
 
         switch (id) {
             case 1:
-                if(inRange && reload == 0) {
+                if (inRange && reload == 0) {
                     Instantiate(arrowProjectile, transform.position, Quaternion.identity);
                     reload = 60;
                 }
