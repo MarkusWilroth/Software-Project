@@ -9,7 +9,7 @@ public class ArrowProjectile : MonoBehaviour {
     public Transform enemy;
 
     void Start() {
-        enemy = GameObject.FindGameObjectWithTag("EnemyLeader").transform;
+        enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
         target = new Vector2(enemy.position.x, enemy.position.y);
     }
 

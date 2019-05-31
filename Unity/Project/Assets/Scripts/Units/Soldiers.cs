@@ -32,7 +32,7 @@ public class Soldiers : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        //inRange = Vector2.Distance(transform.position, enemyPos.position) < range;
+        
         heroDistance = Vector2.Distance(transform.position, heroPos.position);
         Movement();
         reload--;
@@ -58,6 +58,7 @@ public class Soldiers : MonoBehaviour
 
         switch (id) {
             case 1:
+                inRange = Vector2.Distance(transform.position, enemyPos.position) < range;
                 if (inRange && reload == 0) {
                     Instantiate(arrowProjectile, transform.position, Quaternion.identity);
                     reload = 60;

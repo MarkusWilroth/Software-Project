@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3632949109257995649}
   - component: {fileID: 1166516991003395838}
   - component: {fileID: 4406353615342518380}
+  - component: {fileID: -7803149091187911374}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Arrow
@@ -97,3 +98,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-7803149091187911374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773333418882430270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fa082ba580e3f4d9eed46679c5ea39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  enemyLeader: {fileID: 5857370381840239562, guid: 56cd87c93b4152947a1640be6eec3b18,
+    type: 3}
+  enemy: {fileID: 5249372896275424560, guid: 56cd87c93b4152947a1640be6eec3b18, type: 3}

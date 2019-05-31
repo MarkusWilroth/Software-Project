@@ -46,8 +46,6 @@ public class Hero : MonoBehaviour {
     void Update() {
         respawnTimer--;
         reload--;
-        //enemyPos = GameObject.FindGameObjectWithTag("EnemyLeader").transform;
-        //inRange = Vector2.Distance(transform.position, enemyPos.position) < range;
 
         if (alive) {            
             if (soldiers < maxSoldiers) {
@@ -65,17 +63,19 @@ public class Hero : MonoBehaviour {
             }
         }
 
-        //switch (id) {
-        //    case 1:
-        //        if (inRange && reload == 0) {
-        //            Instantiate(arrowProjectile, transform.position, Quaternion.identity);
-        //            reload = 60;
-        //        }
-        //        break;
-        //    case 2:
-        //        break;
-        //}
-        
+        switch (id) {
+            case 1:
+                enemyPos = GameObject.FindGameObjectWithTag("Enemy").transform;
+                inRange = Vector2.Distance(transform.position, enemyPos.position) < range;
+                if (inRange && reload == 0) {
+                    Instantiate(arrowProjectile, transform.position, Quaternion.identity);
+                    reload = 60;
+                }
+                break;
+            case 2:
+                break;
+        }
+
         //if (!(alive) && respawnTimer <= 0) {
         //    Respawn();
         //}        
