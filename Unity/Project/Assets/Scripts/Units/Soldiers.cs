@@ -18,8 +18,7 @@ public class Soldiers : MonoBehaviour
         HP = maxHP;
         switch (id) {
             case 1:
-                heroPos = GameObject.FindGameObjectWithTag("RangeHero").transform;
-                enemyPos = GameObject.FindGameObjectWithTag("EnemyLeader").transform;
+                heroPos = GameObject.FindGameObjectWithTag("RangeHero").transform;                
                 break;
             case 2:
                 heroPos = GameObject.FindGameObjectWithTag("WarriorHero").transform;
@@ -46,6 +45,11 @@ public class Soldiers : MonoBehaviour
                 if (scriptRanger.HP <= 0) {
                     scriptRanger.soldiers--;
                     Destroy(gameObject);
+                    enemyPos = GameObject.FindGameObjectWithTag("EnemyLeader").transform;
+                    inRange = Vector2.Distance(transform.position, enemyPos.position) <= range;
+                    if (inRange) {
+                        Attack();
+                    }
                 }
                 break;
             case 2:
@@ -58,15 +62,16 @@ public class Soldiers : MonoBehaviour
 
         switch (id) {
             case 1:
-                inRange = Vector2.Distance(transform.position, enemyPos.position) < range;
-                if (inRange && reload == 0) {
-                    Instantiate(arrowProjectile, transform.position, Quaternion.identity);
-                    reload = 60;
-                }
+                
                 break;
             case 2:
                 break;
         }
+    }
+
+    void Attack() {
+        Instantiate(arrowProjectile, transform.position, Quaternion.identity);
+        //reload = 60;
     }
 
     void Movement() {

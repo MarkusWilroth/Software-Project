@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ArrowProjectile : MonoBehaviour {
-    Vector2 target;
-    public float speed;
+    private Vector2 target;
+    public float speed, distance = 10;
     public GameObject enemyLeader;
     public Transform enemy;
 
@@ -15,5 +15,9 @@ public class ArrowProjectile : MonoBehaviour {
 
     void Update() {
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+        //if(Vector2.Distance(transform.position, target) < distance) {
+        //    Destroy(gameObject);
+        //}
     }
 }

@@ -66,10 +66,9 @@ public class Hero : MonoBehaviour {
         switch (id) {
             case 1:
                 enemyPos = GameObject.FindGameObjectWithTag("Enemy").transform;
-                inRange = Vector2.Distance(transform.position, enemyPos.position) < range;
-                if (inRange && reload == 0) {
-                    Instantiate(arrowProjectile, transform.position, Quaternion.identity);
-                    reload = 60;
+                inRange = Vector2.Distance(transform.position, enemyPos.position) <= range;
+                if (inRange) {
+                    Attack();
                 }
                 break;
             case 2:
@@ -83,6 +82,11 @@ public class Hero : MonoBehaviour {
         //if (gatherTroops && Vector2.Distance(transform.position, castlePos.position) > 2) { //Kan vara ett bra sätt att samla sina heros och soldiers //Är detta meningen att det ska vara här man skapar sina soldater?
         //    //transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
         //}
+    }
+
+    void Attack() {
+        Instantiate(arrowProjectile, transform.position, Quaternion.identity);
+        reload = 60;
     }
 
     public void TakeDamage(int damage) {
