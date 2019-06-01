@@ -14,7 +14,6 @@ public class Spawner : MonoBehaviour {
 
     void Start() {
         timeBtwSpawns = startTimeBtwSpawns;
-        //enemyPos = GameObject.FindGameObjectWithTag("Enemy").transform;
         isSpawning = true;
     }
 
@@ -24,9 +23,8 @@ public class Spawner : MonoBehaviour {
             int randPos = Random.Range(0, spawnSpots.Length);
             enemyLeaderO = Instantiate(enemyLeader, spawnSpots[randPos].position, Quaternion.identity) as GameObject;
             enemyLeaderO.transform.parent = GameObject.Find("Spawner").transform;
-            //Instantiate(enemyLeader, spawnSpots[randPos].position, Quaternion.identity);
-            //timeBtwSpawns = startTimeBtwSpawns;
         } 
+
         if(activeLeader == maxLeader) {
             isSpawning = false;
         }
@@ -34,7 +32,6 @@ public class Spawner : MonoBehaviour {
             isSpawning = true;
             maxLeader++;
         }
-        //enemyPos = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
 
     public void SpawnEnemy(Vector2 enemyPos) {

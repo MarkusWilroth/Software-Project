@@ -46,12 +46,12 @@ public class EnemyLeader : MonoBehaviour {
             GetClosestTarget();
         }
 
-        if (HP <= 0) {
-            spawner.activeLeader--;
-            scriptLvl.gold += 10;
-            scriptLvl.score += 5;
-            Destroy(gameObject);
-        }
+        //if (HP <= 0) {
+        //    spawner.activeLeader--;
+        //    scriptLvl.gold += 10;
+        //    scriptLvl.score += 5;
+        //    Destroy(gameObject);
+        //}
         //Funderar på om det inte är bäst att ha alla fiender i ett o samma script... vi får kolla på tutorials vad som är bäst
     }
 

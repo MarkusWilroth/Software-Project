@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour {
     private bool move = false;
 
     void Start() {
-        target = new Vector3(-4, -3, 0);
+        //target = new Vector3(-4, -3, 0);
     }
 
     void Update() {

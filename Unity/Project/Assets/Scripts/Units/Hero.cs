@@ -20,7 +20,8 @@ public class Hero : MonoBehaviour {
     private Camera cam;
     private Movement movement;
     private Transform heroPos, castlePos, enemyPos;
-    public GameObject point, arrowProjectile;
+    public GameObject point, arrowProjectile, enemyO;
+    GameObject[] enemysO;
     private Vector2 spawnPoint;
 
     void Start() {
@@ -31,16 +32,8 @@ public class Hero : MonoBehaviour {
         gatherTroops = false;
         activated = false;
         alive = true;
-
-        cam = new Camera();
-
-        //Respawn();
-        //castle = GameObject.FindGameObjectWithTag("Castle").GetComponent<Castle>();
-        //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
-        //castlePos = GameObject.FindGameObjectWithTag("Castle").transform;
+        
         transform.position = spawnPoint;
-
-        //Debug.Log("This hero is updated! " + id);
     }
 
     void Update() {
@@ -62,31 +55,6 @@ public class Hero : MonoBehaviour {
                 }
             }
         }
-
-        switch (id) {
-            case 1:
-                enemyPos = GameObject.FindGameObjectWithTag("Enemy").transform;
-                inRange = Vector2.Distance(transform.position, enemyPos.position) <= range;
-                if (inRange) {
-                    Attack();
-                }
-                break;
-            case 2:
-                break;
-        }
-
-        //if (!(alive) && respawnTimer <= 0) {
-        //    Respawn();
-        //}        
-
-        //if (gatherTroops && Vector2.Distance(transform.position, castlePos.position) > 2) { //Kan vara ett bra sätt att samla sina heros och soldiers //Är detta meningen att det ska vara här man skapar sina soldater?
-        //    //transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
-        //}
-    }
-
-    void Attack() {
-        Instantiate(arrowProjectile, transform.position, Quaternion.identity);
-        reload = 60;
     }
 
     public void TakeDamage(int damage) {
@@ -97,6 +65,23 @@ public class Hero : MonoBehaviour {
     }
     public void DeActivate() {
         activated = false;
+    }
+
+    GameObject GetClosestEnemy() {
+        enemysO = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+
+        foreach (GameObject go in enemysO) {
+            Vector2 diff = go.transform.position - transform.position;
+            float curDistance = diff.sqrMagnitude;
+
+            if (curDistance < distance) {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        return closest;
     }
 
     void Recruit() { //Ska vi göra detta utan id tror jag det behöver vara soldier scriptet som kollar hur många soldater varje hero har och om det finns plats för fler soldater spawnar den den typ det plats för

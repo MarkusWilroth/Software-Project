@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1965418444112674161}
   - component: {fileID: 3709652353574250250}
   - component: {fileID: 8646629017725330194}
+  - component: {fileID: -3241921713228802126}
   m_Layer: 0
   m_Name: Enemy_knife
   m_TagString: Enemy
@@ -93,10 +94,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: 0
-  soldierLvl: 1
   HP: 7
   maxHP: 7
   speed: 2
   maxDistance: 1
   minDistance: 0.5
   EnemyDistance: 0
+--- !u!114 &-3241921713228802126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786540804516292282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f779a23576062441bf3838a5afd52bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 15
+  scoreValue: 5
+  goldValue: 5

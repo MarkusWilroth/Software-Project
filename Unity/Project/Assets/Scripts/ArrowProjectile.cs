@@ -3,21 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ArrowProjectile : MonoBehaviour {
-    private Vector2 target;
-    public float speed, distance = 10;
-    public GameObject enemyLeader;
-    public Transform enemy;
+    public Vector2 target;
+    private Vector2 arrowPos;
+    public float speed, scale;
+    public int damage;
+    public GameObject enemyO;
+    public EnemyHealth scriptEnemyHP;
+
 
     void Start() {
-        enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
-        target = new Vector2(enemy.position.x, enemy.position.y);
+        arrowPos = new Vector2(transform.position.x, transform.position.y);
     }
 
     void Update() {
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        arrowPos.x = transform.position.x;
+        arrowPos.y = transform.position.y;
+        //transform.localScale = new Vector2(scale, scale);
 
-        //if(Vector2.Distance(transform.position, target) < distance) {
-        //    Destroy(gameObject);
-        //}
+        if (arrowPos == target) {
+            //Debug.Log("Before scriptEnemy");
+            //scriptEnemyHP = enemyO.GetComponent<EnemyHealth>();
+            Debug.Log("ScriptEnemyHP: " + scriptEnemyHP);
+            //Debug.Log("After scriptEnemy");
+            scriptEnemyHP.hp -= damage;
+            Destroy(gameObject);
+        }
     }
 }

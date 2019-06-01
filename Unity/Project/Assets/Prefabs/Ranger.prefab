@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3723646321010965026}
   - component: {fileID: 4882858731303371182}
   - component: {fileID: 1508671547862510199}
+  - component: {fileID: 8374985703714871460}
   m_Layer: 0
   m_Name: Ranger
   m_TagString: Soldier
@@ -160,3 +161,21 @@ MonoBehaviour:
   hp: 25
   maxHP: 25
   prefab: {fileID: 1072776906524616894}
+--- !u!114 &8374985703714871460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072776906524616894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a5706188d73214f8f20dcc18ee3412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrow: {fileID: 773333418882430270, guid: e7e54a832b26a084791811325db68dc4, type: 3}
+  scale: 1
+  reloadTime: 0.7
+  damage: 2
+  range: 8
+  minRange: 1
