@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: 4552689382659545790}
   - component: {fileID: 5570079200459534979}
   - component: {fileID: 4501975131254054748}
+  - component: {fileID: 4506331391680289161}
   - component: {fileID: -1343844216959878725}
+  - component: {fileID: -7177816583020545556}
+  - component: {fileID: 4145906752418228642}
   m_Layer: 0
   m_Name: Swordsman
   m_TagString: Soldier
@@ -137,10 +140,25 @@ MonoBehaviour:
   HP: 0
   maxHP: 10
   id: 2
+  range: 0
   speed: 4
   maxDistance: 1
   minDistance: 0.5
   heroDistance: 0
+  reload: 0
+  arrowProjectile: {fileID: 0}
+--- !u!114 &4506331391680289161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491092165501036306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856c59edcf44e84cac0b6100796dab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-1343844216959878725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,4 +173,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 30
   maxHP: 30
-  prefab: {fileID: 5491092165501036306}
+--- !u!114 &-7177816583020545556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491092165501036306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb53b652f2c0234caa73ece4026dc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRespawning: 0
+  isRanged: 0
+  spawnTime: 5
+--- !u!114 &4145906752418228642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491092165501036306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd74c30737287a440a5f45965382c991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 1
+  damage: 2
+  attackTime: 0.8
+  scriptHealth: {fileID: 0}

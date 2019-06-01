@@ -15,7 +15,10 @@ GameObject:
   - component: {fileID: 4209362389488953739}
   - component: {fileID: 7452871847682927134}
   - component: {fileID: -8407152527370855316}
+  - component: {fileID: -3026880641162793942}
   - component: {fileID: 4894837684743524576}
+  - component: {fileID: -2043053764607442848}
+  - component: {fileID: -2272552837428911930}
   m_Layer: 0
   m_Name: Hero_Warrior
   m_TagString: WarriorHero
@@ -181,6 +184,18 @@ MonoBehaviour:
   ranger: {fileID: 1072776906524616894, guid: d0582641ab7deb74b9b0d9ea61d1ccac, type: 3}
   swordsman: {fileID: 5491092165501036306, guid: 02545208e6478944bbe670fd0d77a480,
     type: 3}
+--- !u!114 &-3026880641162793942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8399032799516112155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856c59edcf44e84cac0b6100796dab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4894837684743524576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,4 +210,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 40
   maxHP: 40
-  prefab: {fileID: 8399032799516112155}
+--- !u!114 &-2043053764607442848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8399032799516112155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb53b652f2c0234caa73ece4026dc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRespawning: 0
+  isRanged: 0
+  spawnTime: 10
+--- !u!114 &-2272552837428911930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8399032799516112155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd74c30737287a440a5f45965382c991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
+  damage: 6
+  attackTime: 0.6
+  scriptHealth: {fileID: 0}

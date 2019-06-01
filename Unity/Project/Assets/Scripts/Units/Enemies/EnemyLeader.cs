@@ -14,7 +14,6 @@ public class EnemyLeader : MonoBehaviour {
     private Spawner spawner;
     private Soldiers scriptSoldier;
     private HealthManager scriptHP;
-    private LevelScript scriptLvl;
     GameObject warriorO, rangerO, towerO, soldierO, castleO, spawnerO, lvlManagerO;
     private GameObject[] soldiersO;
 
@@ -26,7 +25,6 @@ public class EnemyLeader : MonoBehaviour {
         warriorO = GameObject.FindGameObjectWithTag("WarriorHero");
         rangerO = GameObject.FindGameObjectWithTag("RangeHero");
         castleO = GameObject.FindGameObjectWithTag("Castle");
-        lvlManagerO = GameObject.FindGameObjectWithTag("lvlManager");
         isAttacking = false;
     }
     
@@ -45,14 +43,6 @@ public class EnemyLeader : MonoBehaviour {
         if (isAttacking) {
             GetClosestTarget();
         }
-
-        //if (HP <= 0) {
-        //    spawner.activeLeader--;
-        //    scriptLvl.gold += 10;
-        //    scriptLvl.score += 5;
-        //    Destroy(gameObject);
-        //}
-        //Funderar på om det inte är bäst att ha alla fiender i ett o samma script... vi får kolla på tutorials vad som är bäst
     }
 
     void TakeDamage(int damage) {
@@ -84,7 +74,6 @@ public class EnemyLeader : MonoBehaviour {
         scriptRanger = rangerO.GetComponent<Hero>();
         scriptSoldier = soldierO.GetComponent<Soldiers>();
         scriptCastle = castleO.GetComponent<Castle>();
-        scriptLvl = lvlManagerO.GetComponent<LevelScript>();
         spawner = spawnerO.GetComponent<Spawner>();
     }
 
@@ -110,33 +99,31 @@ public class EnemyLeader : MonoBehaviour {
         GameObject target = null;
         float dist;
 
-        if(rangeDist < attackDistance || warriorDist < attackDistance || soldierDist < attackDistance) {
+        if (rangeDist < attackDistance || warriorDist < attackDistance || soldierDist < attackDistance) {
             if (rangeDist <= warriorDist && rangeDist <= soldierDist) {
                 dist = rangeDist;
                 target = rangerO;
                 AttackHero(dist, scriptRanger);
-            } 
-            else if (warriorDist <= soldierDist) {
+            } else if (warriorDist <= soldierDist) {
                 dist = warriorDist;
                 target = warriorO;
                 AttackHero(dist, scriptWarrior);
-            } 
-            else {
+            } else {
                 dist = soldierDist;
                 target = soldierO;
                 AttackSoldier(dist);
             }
-        }
-        else {
+        } else {
             dist = castleDist;
             target = castleO;
             AttackBuilding(dist, scriptCastle);
         }
-        
+
         targetPos = target.transform;
         scriptHP = target.GetComponent<HealthManager>();
         TargetPos(targetPos);
     }
+
     #endregion
 
     #region Attack
@@ -166,12 +153,12 @@ public class EnemyLeader : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Arrow")) {
-            HP--;
-            Destroy(other.gameObject);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D other) {
+    //    if (other.CompareTag("Arrow")) {
+    //        HP--;
+    //        Destroy(other.gameObject);
+    //    }
+    //}
 
     //void Attack(GameObject target, Transform pos, float dist, HealthManager scriptHP) {
 

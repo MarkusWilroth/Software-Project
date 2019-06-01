@@ -7,7 +7,6 @@ public class ArrowProjectile : MonoBehaviour {
     private Vector2 arrowPos;
     public float speed, scale;
     public int damage;
-    public GameObject enemyO;
     public EnemyHealth scriptEnemyHP;
 
 
@@ -19,13 +18,9 @@ public class ArrowProjectile : MonoBehaviour {
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
         arrowPos.x = transform.position.x;
         arrowPos.y = transform.position.y;
-        //transform.localScale = new Vector2(scale, scale);
+        //transform.localScale = new Vector2(scale, scale); //Vill fixa scale men vet inte hur jag ska göra det...
 
         if (arrowPos == target) {
-            //Debug.Log("Before scriptEnemy");
-            //scriptEnemyHP = enemyO.GetComponent<EnemyHealth>();
-            Debug.Log("ScriptEnemyHP: " + scriptEnemyHP);
-            //Debug.Log("After scriptEnemy");
             scriptEnemyHP.hp -= damage;
             Destroy(gameObject);
         }

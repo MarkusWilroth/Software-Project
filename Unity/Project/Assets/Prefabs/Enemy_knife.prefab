@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 3709652353574250250}
   - component: {fileID: 8646629017725330194}
   - component: {fileID: -3241921713228802126}
+  - component: {fileID: 5384260536280004142}
+  - component: {fileID: -4644758905359639374}
+  - component: {fileID: 2987891576879850301}
   m_Layer: 0
   m_Name: Enemy_knife
   m_TagString: Enemy
@@ -88,7 +91,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3786540804516292282}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef2b26fd9c730dc43857ab6a83123428, type: 3}
   m_Name: 
@@ -115,3 +118,48 @@ MonoBehaviour:
   hp: 15
   scoreValue: 5
   goldValue: 5
+--- !u!114 &5384260536280004142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786540804516292282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9b4c09cae486049b25fb3709a5f73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTargetUnits: 0
+  attackDist: 5
+  targetO: {fileID: 0}
+--- !u!114 &-4644758905359639374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786540804516292282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6c34deafc5a9e4b973c5e007650bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  transTarget: {fileID: 0}
+--- !u!114 &2987891576879850301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786540804516292282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4904f5316f9e544d9edea8fb8ce6718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 1
+  damage: 2
+  attackTime: 0.5
+  scriptHealth: {fileID: 0}

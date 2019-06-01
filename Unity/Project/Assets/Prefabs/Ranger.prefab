@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: -4361478638464244028}
   - component: {fileID: 3723646321010965026}
   - component: {fileID: 4882858731303371182}
+  - component: {fileID: -7566468791017241191}
   - component: {fileID: 1508671547862510199}
+  - component: {fileID: 2846898576336951408}
+  - component: {fileID: -6450278715626106423}
   - component: {fileID: 8374985703714871460}
   m_Layer: 0
   m_Name: Ranger
@@ -146,6 +149,18 @@ MonoBehaviour:
   reload: 0
   arrowProjectile: {fileID: 773333418882430270, guid: e7e54a832b26a084791811325db68dc4,
     type: 3}
+--- !u!114 &-7566468791017241191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072776906524616894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856c59edcf44e84cac0b6100796dab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1508671547862510199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +175,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 25
   maxHP: 25
-  prefab: {fileID: 1072776906524616894}
+--- !u!114 &2846898576336951408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072776906524616894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb53b652f2c0234caa73ece4026dc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRespawning: 0
+  isRanged: 1
+  spawnTime: 5
+--- !u!114 &-6450278715626106423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072776906524616894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd74c30737287a440a5f45965382c991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 1
+  damage: 1
+  attackTime: 1
+  scriptHealth: {fileID: 0}
 --- !u!114 &8374985703714871460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 773333418882430270, guid: e7e54a832b26a084791811325db68dc4, type: 3}
   scale: 1
-  reloadTime: 0.7
+  reloadTime: 1.5
   damage: 2
   range: 8
   minRange: 1

@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class castleTxt : MonoBehaviour {
     public Text txtCastle;
     GameObject castleO;
-    Castle scriptCastle;
+    HealthManager scriptCastle;
 
     void Start() {
         castleO = GameObject.FindGameObjectWithTag("Castle");
-        scriptCastle = castleO.GetComponent<Castle>();
+        scriptCastle = castleO.GetComponent<HealthManager>();
     }
 
     void Update() {
-        txtCastle.text = "Castle health: " + scriptCastle.HP;
+        txtCastle.text = "Castle health: " + scriptCastle.hp;
     }
 
 }

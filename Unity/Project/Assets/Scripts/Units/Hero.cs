@@ -67,23 +67,6 @@ public class Hero : MonoBehaviour {
         activated = false;
     }
 
-    GameObject GetClosestEnemy() {
-        enemysO = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject closest = null;
-        float distance = Mathf.Infinity;
-
-        foreach (GameObject go in enemysO) {
-            Vector2 diff = go.transform.position - transform.position;
-            float curDistance = diff.sqrMagnitude;
-
-            if (curDistance < distance) {
-                closest = go;
-                distance = curDistance;
-            }
-        }
-        return closest;
-    }
-
     void Recruit() { //Ska vi göra detta utan id tror jag det behöver vara soldier scriptet som kollar hur många soldater varje hero har och om det finns plats för fler soldater spawnar den den typ det plats för
         if (id == 1) {
             heroPos = GameObject.FindGameObjectWithTag("RangeHero").transform;
@@ -94,6 +77,7 @@ public class Hero : MonoBehaviour {
         recruit.RecruitSoldier(id, vecPos);
         soldiers++;
     }
+
     void Respawn() {
         //recruit.resHero();
         alive = true;

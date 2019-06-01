@@ -15,7 +15,10 @@ GameObject:
   - component: {fileID: 3453647709658734576}
   - component: {fileID: 1660470243600307053}
   - component: {fileID: 2900916962824380239}
+  - component: {fileID: -5501830890531676022}
   - component: {fileID: -974746402278442949}
+  - component: {fileID: -2298016345038481562}
+  - component: {fileID: 4821767893579872086}
   - component: {fileID: 8334340808166761996}
   m_Layer: 0
   m_Name: Hero_Captain
@@ -183,6 +186,18 @@ MonoBehaviour:
   ranger: {fileID: 1072776906524616894, guid: d0582641ab7deb74b9b0d9ea61d1ccac, type: 3}
   swordsman: {fileID: 5491092165501036306, guid: 02545208e6478944bbe670fd0d77a480,
     type: 3}
+--- !u!114 &-5501830890531676022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321268313651732403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856c59edcf44e84cac0b6100796dab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-974746402278442949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +212,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 40
   maxHP: 40
-  prefab: {fileID: 1321268313651732403}
+--- !u!114 &-2298016345038481562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321268313651732403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb53b652f2c0234caa73ece4026dc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRespawning: 0
+  isRanged: 1
+  spawnTime: 10
+--- !u!114 &4821767893579872086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321268313651732403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd74c30737287a440a5f45965382c991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 1
+  damage: 4
+  attackTime: 0.7
+  scriptHealth: {fileID: 0}
 --- !u!114 &8334340808166761996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 773333418882430270, guid: e7e54a832b26a084791811325db68dc4, type: 3}
   scale: 2
-  reloadTime: 0.7
+  reloadTime: 1.5
   damage: 4
   range: 10
   minRange: 1
