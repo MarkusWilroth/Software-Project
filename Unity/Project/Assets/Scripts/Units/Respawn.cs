@@ -23,7 +23,6 @@ public class Respawn : MonoBehaviour {
         if(isRespawning) {
             scriptMovement.movementState = Hero_Movement.MovementState.dead;
             timeStamp += Time.deltaTime;
-            scriptHealth.enabled = false;
 
             if(isRanged) {
                 scriptArrow.enabled = false;
@@ -33,7 +32,6 @@ public class Respawn : MonoBehaviour {
                 scriptMovement.movementState = Hero_Movement.MovementState.respawn;
                 isRespawning = false;
                 timeStamp = 0;
-                scriptHealth.enabled = true;
 
                 if(isRanged) {
                     scriptArrow.enabled = true;

@@ -39,39 +39,6 @@ public class Soldiers : MonoBehaviour
         if (HP <= 0) {
             Destroy(gameObject);
         }
-
-        switch (id) {
-            case 1:
-                if (scriptRanger.HP <= 0) {
-                    scriptRanger.soldiers--;
-                    Destroy(gameObject);
-                    enemyPos = GameObject.FindGameObjectWithTag("EnemyLeader").transform;
-                    inRange = Vector2.Distance(transform.position, enemyPos.position) <= range;
-                    if (inRange) {
-                        Attack();
-                    }
-                }
-                break;
-            case 2:
-                if (scriptWarrior.HP <= 0) {
-                    scriptWarrior.soldiers--;
-                    Destroy(gameObject);
-                }
-                break;
-        }
-
-        switch (id) {
-            case 1:
-                
-                break;
-            case 2:
-                break;
-        }
-    }
-
-    void Attack() {
-        Instantiate(arrowProjectile, transform.position, Quaternion.identity);
-        //reload = 60;
     }
 
     void Movement() {

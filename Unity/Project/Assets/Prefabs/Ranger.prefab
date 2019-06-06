@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2846898576336951408}
   - component: {fileID: -6450278715626106423}
   - component: {fileID: 8374985703714871460}
+  - component: {fileID: -1828597405119363105}
   m_Layer: 0
   m_Name: Ranger
   m_TagString: Soldier
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072776906524616894}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f390d4698b933844bffae2687068ec8, type: 3}
   m_Name: 
@@ -220,7 +221,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 5246011750723455504, guid: 5e762161da687e34aa873c4401b01037, type: 3}
   scale: 0.2
-  reloadTime: 1.5
+  reloadTime: 2.5
   damage: 2
   range: 8
   minRange: 1
+--- !u!114 &-1828597405119363105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072776906524616894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7348202d95f9e742a39a81ed474390b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activated: 0
+  heroPos: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
+  movementState: 0
+  hero: {fileID: 1321268313651732403, guid: 8ac00b03a22231946bba7cda5f53f987, type: 3}
+  speed: 3.8
+  maxDistance: 1
+  minDistance: 0.5
+  heroDistance: 0

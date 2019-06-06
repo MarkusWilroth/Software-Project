@@ -82,9 +82,9 @@ public class Hero_Movement : MonoBehaviour {
     }
 
     void InCombat() {
-        enemyO = scriptGetEnemy.GetClosest();
         target = enemyO.transform.position;
-        if (Input.GetKeyDown("space")) {
+
+        if (Input.GetKeyDown("space") && activated) {
             movementState = MovementState.retreating;
         }
         if(distEnemy >= attackRange) {

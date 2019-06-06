@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class SoldierSpawn : MonoBehaviour {
     public GameObject soldier;
-    private GameObject soldierO;
+    private GameObject soldierO, spawnPoint;
     public int maxSoldiers, soldiers;
     Hero_Movement scriptHeroPos;
     private Vector2 heroPos;
 
     void Start() {
-        scriptHeroPos = gameObject.GetComponent<Hero_Movement>();
+        spawnPoint = GameObject.Find("CastleSpawn");
     }
 
     void Update() {
         if(soldiers <= maxSoldiers) {
-            heroPos = scriptHeroPos.heroPos;
-            soldierO = Instantiate(soldier, heroPos, Quaternion.identity);
-            //soldierO.transform.parent = gameObject.transform;
+            soldierO = Instantiate(soldier, spawnPoint.transform.position, Quaternion.identity);
             soldiers++;
         }
     }

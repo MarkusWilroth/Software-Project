@@ -38,7 +38,6 @@ public class EnemyLeader : MonoBehaviour {
         if (enemies < maxEnemies) {
             spawner.SpawnEnemy(transform.position);
             enemies++;
-            Spawn();
         }
         if (isAttacking) {
             GetClosestTarget();
@@ -103,11 +102,11 @@ public class EnemyLeader : MonoBehaviour {
             if (rangeDist <= warriorDist && rangeDist <= soldierDist) {
                 dist = rangeDist;
                 target = rangerO;
-                AttackHero(dist, scriptRanger);
+                AttackHero(dist);
             } else if (warriorDist <= soldierDist) {
                 dist = warriorDist;
                 target = warriorO;
-                AttackHero(dist, scriptWarrior);
+                AttackHero(dist);
             } else {
                 dist = soldierDist;
                 target = soldierO;
@@ -131,16 +130,16 @@ public class EnemyLeader : MonoBehaviour {
         transform.position = Vector2.MoveTowards(transform.position, pos.position, speed * Time.deltaTime);
     }
 
-    void AttackHero(float dist, Hero scriptHero) {
+    void AttackHero(float dist) {
         if (attackTimer <= 0 && dist <= range) {
-            scriptHero.HP -= damage;
+            scriptHP.hp -= damage;
             HP--;
             attackTimer = 60;
         }
     }
     void AttackSoldier(float dist) {
         if (attackTimer <= 0 && dist <= range) {
-            scriptSoldier.HP -= damage;
+            scriptHP.hp -= damage;
             HP--;
             attackTimer = 60;
         }
@@ -152,61 +151,6 @@ public class EnemyLeader : MonoBehaviour {
             attackTimer = 60;
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D other) {
-    //    if (other.CompareTag("Arrow")) {
-    //        HP--;
-    //        Destroy(other.gameObject);
-    //    }
-    //}
-
-    //void Attack(GameObject target, Transform pos, float dist, HealthManager scriptHP) {
-
-    //    if (attackTimer <= 0 && dist <= range) {
-    //        scriptHP.hp -= damage;
-    //        HP--;
-    //        attackTimer = 60;
-    //    }
-    //}
-
-    //void AttackRangeEnemy() {
-    //    if(attackTimer <= 0 && rangeDist <= range) {
-    //        scriptRanger.HP -= damage;
-    //        HP--;
-    //        attackTimer = 60;
-    //    }
-    //}
-
-    //void AttackWarriorEnemy() {
-    //    transform.position = Vector2.MoveTowards(transform.position, warriorHeroPos.position, speed * Time.deltaTime);
-    //    if(attackTimer <= 0 && warriorDist <= range) {
-    //        scriptWarrior.HP -= damage;
-    //        HP--;
-    //        attackTimer = 60;
-    //    }
-    //}
-
-    //void AttackSoldierEnemy() {
-    //    transform.position = Vector2.MoveTowards(transform.position, soldierPos.position, speed * Time.deltaTime);
-    //    if(attackTimer <= 0 && soldierDist <= range) {
-    //        scriptSoldier.HP -= damage;
-    //        HP--;
-    //        attackTimer = 60;
-    //    }        
-    //}
-
-    //void AttackCastle() {
-    //    transform.position = Vector2.MoveTowards(transform.position, castlePos.position, speed * Time.deltaTime);
-    //    if(attackTimer <= 0 && castleDist <= range) {
-    //        scriptCastle.HP -= damage;
-    //        HP--;
-    //        attackTimer = 60;
-    //    }
-    //}
     #endregion
-
-    void Spawn() {
-        //spawner.SpawnEnemy();
-        //enemies++;
-    }
+    
 }
