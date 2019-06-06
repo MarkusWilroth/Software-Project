@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a5706188d73214f8f20dcc18ee3412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 773333418882430270, guid: e7e54a832b26a084791811325db68dc4, type: 3}
+  arrow: {fileID: 5246011750723455504, guid: 5e762161da687e34aa873c4401b01037, type: 3}
   scale: 1
   reloadTime: 2
   damage: 8
