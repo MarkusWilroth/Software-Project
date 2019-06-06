@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   woodCost: 25
   stoneCost: 10
-  goldCost: 0
+  goldCost: 70
   description: Basic tower to keep the enemy away
 --- !u!114 &3508738560302216254
 MonoBehaviour:

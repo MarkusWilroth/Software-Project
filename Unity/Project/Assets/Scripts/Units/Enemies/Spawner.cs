@@ -1,37 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour {
     public GameObject enemyLeader, enemy;
     private GameObject enemyLeaderO, enemyO;
     public Transform[] spawnSpots;
-    public int activeLeader, maxLeader;
+    public int activeLeader, spawnLeaders, goldGained;
     private Transform enemyPos;
-    private float timeBtwSpawns;
-    public float startTimeBtwSpawns;
+    private float timeStamp;
+    public float waveTimer;
     private bool isSpawning;
+    private string txtWave;
+    public Text waveInfo;
 
     void Start() {
-        timeBtwSpawns = startTimeBtwSpawns;
         isSpawning = true;
     }
 
     void Update() {
-        if (activeLeader < maxLeader && isSpawning) {
+        timeStamp += Time.deltaTime;
+
+        if(waveTimer <= timeStamp) {
+            StartWave();
+        }
+
+        if(isSpawning) {
+            Spawning();
+        }
+        waveInfo.text = "Next wave: "+((int)(waveTimer-timeStamp))+"\nEnemies: " + activeLeader;
+        
+    }
+    public void Spawning() {
+        if (activeLeader < spawnLeaders) {
             activeLeader++;
             int randPos = Random.Range(0, spawnSpots.Length);
             enemyLeaderO = Instantiate(enemyLeader, spawnSpots[randPos].position, Quaternion.identity) as GameObject;
             enemyLeaderO.transform.parent = GameObject.Find("Spawner").transform;
-        } 
-
-        if(activeLeader == maxLeader) {
+        }
+        else {
             isSpawning = false;
         }
-        if(activeLeader <= 0) {
-            isSpawning = true;
-            maxLeader++;
-        }
+    }
+
+    public void StartWave() {
+        goldGained = (int)(waveTimer - timeStamp);
+        timeStamp = 0;
+        waveTimer += 2;
+        spawnLeaders += 2;
+        activeLeader = 0;
+        isSpawning = true;
     }
 
     public void SpawnEnemy(Vector2 enemyPos) {

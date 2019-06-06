@@ -94,5 +94,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   woodCost: 50
   stoneCost: 0
-  goldCost: 10
+  goldCost: 150
   description: Generates wood

@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   woodCost: 10
   stoneCost: 60
-  goldCost: 50
+  goldCost: 200
   description: Strong tower with good attack
 --- !u!114 &8544071150175501778
 MonoBehaviour:

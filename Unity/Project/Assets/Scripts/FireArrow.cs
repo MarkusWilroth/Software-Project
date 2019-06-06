@@ -33,8 +33,6 @@ public class FireArrow : MonoBehaviour {
                 target = transEnemy.position;
 
                 direction = enemyO.transform.position - transform.position;
-                //angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                //q = Quaternion.AngleAxis(angle, Vector3.forward);
 
                 CreateArrow();
                 timeStamp = 0;
@@ -45,7 +43,6 @@ public class FireArrow : MonoBehaviour {
     public void CreateArrow() {
         arrowO = Instantiate(arrow, transform.position, Quaternion.identity) as GameObject;
         arrowO.transform.parent = GameObject.Find("ArrowManager").transform;
-        //arrowO.transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime);
         rotation = Quaternion.LookRotation(Vector3.forward, direction);
         arrowO.transform.rotation = rotation * Quaternion.Euler(0, 0, 90);
 
