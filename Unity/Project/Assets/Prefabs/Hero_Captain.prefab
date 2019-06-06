@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: -2298016345038481562}
   - component: {fileID: 4821767893579872086}
   - component: {fileID: 8334340808166761996}
+  - component: {fileID: 4087626783123479747}
   m_Layer: 0
   m_Name: Hero_Captain
   m_TagString: RangeHero
@@ -96,7 +97,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321268313651732403}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b21e91c3befa2994699e9b548d9c04db, type: 3}
   m_Name: 
@@ -126,7 +127,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321268313651732403}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7348202d95f9e742a39a81ed474390b, type: 3}
   m_Name: 
@@ -183,9 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e826edda371ff429231e85e0e1c420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ranger: {fileID: 1072776906524616894, guid: d0582641ab7deb74b9b0d9ea61d1ccac, type: 3}
-  swordsman: {fileID: 5491092165501036306, guid: 02545208e6478944bbe670fd0d77a480,
-    type: 3}
+  soldier: {fileID: 1072776906524616894, guid: d0582641ab7deb74b9b0d9ea61d1ccac, type: 3}
+  maxSoldiers: 4
+  soldiers: 0
 --- !u!114 &-5501830890531676022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,3 +262,20 @@ MonoBehaviour:
   damage: 4
   range: 10
   minRange: 1
+--- !u!114 &4087626783123479747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321268313651732403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fae515ede0a2c74c97836ce383f6cf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  activated: 0
+  heroPos: {x: 0, y: 0}
+  target: {x: -4, y: -5, z: 0}
+  movementState: 0

@@ -10,6 +10,7 @@ public class Respawn : MonoBehaviour {
     private float timeStamp;
 
     HealthManager scriptHealth;
+
     FireArrow scriptArrow;
 
     void Start() {

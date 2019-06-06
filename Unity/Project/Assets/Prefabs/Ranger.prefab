@@ -142,7 +142,7 @@ MonoBehaviour:
   maxHP: 10
   id: 1
   range: 10
-  speed: 3
+  speed: 3.8
   maxDistance: 1
   minDistance: 0.5
   heroDistance: 0
