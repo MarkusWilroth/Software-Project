@@ -110,7 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fa082ba580e3f4d9eed46679c5ea39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  enemyLeader: {fileID: 5857370381840239562, guid: 56cd87c93b4152947a1640be6eec3b18,
-    type: 3}
-  enemy: {fileID: 5249372896275424560, guid: 56cd87c93b4152947a1640be6eec3b18, type: 3}
+  target: {x: 0, y: 0}
+  speed: 30
+  scale: 0
+  damage: 0
+  scriptEnemyHP: {fileID: 0}

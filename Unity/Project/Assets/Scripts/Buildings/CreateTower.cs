@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class CreateTower : MonoBehaviour {
     private bool building;
+    private int woodCost, stoneCost, goldCost;
     public GameObject towerO, tower;
     private Transform tranBuild;
-    
+    private LevelScript scriptLvl;
+    private Building scriptBuild;
+    GameObject lvlManagerO;
+
+    void Start() {
+        lvlManagerO = GameObject.FindGameObjectWithTag("lvlManager");
+    }
+
     public void Construct(bool building) {
         this.building = building;
     }
@@ -14,12 +22,24 @@ public class CreateTower : MonoBehaviour {
     void Update() {
         if(building) {
             if (Input.GetMouseButtonDown(0)) {
-                Debug.Log("Tower Building!"); //Detta debuggas
-                //tranBuild.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                towerO = Instantiate(tower, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as GameObject;
-                towerO.transform.parent = GameObject.Find("BuildingManager").transform;
-                Debug.Log("Did it get here?"); //Detta debuggas inte....
-                building = false;
+                scriptBuild = tower.GetComponent<Building>();
+
+                scriptLvl = lvlManagerO.GetComponent<LevelScript>();
+
+                if(scriptLvl.wood >= scriptBuild.woodCost && scriptLvl.stone >= scriptBuild.stoneCost && scriptLvl.gold >= scriptBuild.goldCost) {
+
+                    scriptLvl.wood -= scriptBuild.woodCost;
+                    scriptLvl.stone -= scriptBuild.stoneCost;
+                    scriptLvl.gold -= scriptBuild.goldCost;
+
+                    towerO = Instantiate(tower, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as GameObject;
+                    towerO.transform.parent = GameObject.Find("TowerManager").transform;
+                    building = false;
+                }
+                else {
+                    Debug.Log("Inte nog med resurser");
+                }
+               
             }
             if (Input.GetMouseButtonDown(1)) { //höger musknapp?
                 building = false;

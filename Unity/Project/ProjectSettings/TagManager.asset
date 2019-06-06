@@ -15,6 +15,7 @@ TagManager:
   - Arrow
   - lvlManager
   - enemySpawn
+  - Building
   layers:
   - Default
   - TransparentFX
