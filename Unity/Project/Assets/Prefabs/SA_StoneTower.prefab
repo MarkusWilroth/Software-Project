@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7843847072993749244}
   - component: {fileID: 8544071150175501778}
   - component: {fileID: 7593158053431939565}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SA_StoneTower
-  m_TagString: Untagged
+  m_TagString: ArcherTower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

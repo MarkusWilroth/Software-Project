@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6832837048792745279}
   - component: {fileID: 8330438236966726881}
+  - component: {fileID: 436113205733821720}
   - component: {fileID: -5057286217968018890}
   - component: {fileID: 3508738560302216254}
   - component: {fileID: -855211242208837391}
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9173880551633727883}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.645557, y: -1.4105505, z: 0}
+  m_LocalPosition: {x: -11.645557, y: -1.33, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,6 +83,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &436113205733821720
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9173880551633727883}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1.4}
+  serializedVersion: 2
+  m_Radius: 1
 --- !u!114 &-5057286217968018890
 MonoBehaviour:
   m_ObjectHideFlags: 0
