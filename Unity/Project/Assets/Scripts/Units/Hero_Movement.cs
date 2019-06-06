@@ -102,6 +102,7 @@ public class Hero_Movement : MonoBehaviour {
         }
         //Ska inte kunna göra skada eller skjuta
         target = spawnPoint.transform.position;
+
         if(transform.position == target) {
             movementState = MovementState.idle;
         }

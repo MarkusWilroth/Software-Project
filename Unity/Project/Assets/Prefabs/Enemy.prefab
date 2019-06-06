@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTargetUnits: 0
-  attackDist: 5
+  attackDist: 2
   targetO: {fileID: 0}
 --- !u!114 &-6604369399663980163
 MonoBehaviour:

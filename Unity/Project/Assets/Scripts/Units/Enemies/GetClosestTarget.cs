@@ -71,8 +71,7 @@ public class GetClosestTarget : MonoBehaviour {
     GameObject GetClosest() {
         GameObject target = null;
         float dist;
-
-        if (rangeDist < attackDist || warriorDist < attackDist || soldierDist < attackDist) {
+        if ((rangeDist < attackDist|| warriorDist < attackDist || soldierDist < attackDist) && castleDist > attackDist) {
             if (rangeDist <= warriorDist && rangeDist <= soldierDist) {
                 dist = rangeDist;
                 target = rangerO;

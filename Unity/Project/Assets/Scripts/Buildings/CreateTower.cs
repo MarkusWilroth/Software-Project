@@ -10,6 +10,7 @@ public class CreateTower : MonoBehaviour {
     private LevelScript scriptLvl;
     private Building scriptBuild;
     GameObject lvlManagerO;
+    Vector2 mousePos;
 
     void Start() {
         lvlManagerO = GameObject.FindGameObjectWithTag("lvlManager");
@@ -32,7 +33,8 @@ public class CreateTower : MonoBehaviour {
                     scriptLvl.stone -= scriptBuild.stoneCost;
                     scriptLvl.gold -= scriptBuild.goldCost;
 
-                    towerO = Instantiate(tower, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as GameObject;
+                    mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    towerO = Instantiate(tower, mousePos, Quaternion.identity) as GameObject;
                     towerO.transform.parent = GameObject.Find("TowerManager").transform;
                     building = false;
                 }
