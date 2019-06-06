@@ -115,7 +115,7 @@ public class EnemyLeader : MonoBehaviour {
         } else {
             dist = castleDist;
             target = castleO;
-            AttackBuilding(dist, scriptCastle);
+            //AttackBuilding(dist, scriptCastle);
         }
 
         targetPos = target.transform;
@@ -144,13 +144,13 @@ public class EnemyLeader : MonoBehaviour {
             attackTimer = 60;
         }
     }
-    void AttackBuilding(float dist, Castle scriptCastle) { //Tycker vi ändrar namnet på denna script till building och så tower = castle fast mindre hp och man förlorar inte om de går sönder
-        if (attackTimer <= 0 && dist <= range) {
-            scriptCastle.HP -= damage;
-            HP--;
-            attackTimer = 60;
-        }
-    }
+    //void AttackBuilding(float dist, Castle scriptCastle) { //Tycker vi ändrar namnet på denna script till building och så tower = castle fast mindre hp och man förlorar inte om de går sönder
+    //    if (attackTimer <= 0 && dist <= range) {
+    //        scriptCastle.HP -= damage;
+    //        HP--;
+    //        attackTimer = 60;
+    //    }
+    //}
     #endregion
     
 }

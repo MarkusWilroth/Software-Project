@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour { //Planen är att detta script ska hålla koll på allas HP och när någons hp är 0 ska denna script skicka till den andras hero/soldier/castle script att den är död
     public int hp, maxHP;
+    public bool isCastle;
 
     void Update() {
         if(hp <= 0) {
-            Respawn();
+            if(isCastle) {
+                gameObject.GetComponent<Castle>().GameOver();
+            }
+            else {
+                Respawn();
+            }
+            
         }
     }
 
