@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9197105133776421596}
   - component: {fileID: 6427807777466177895}
   - component: {fileID: 6216297285183573374}
+  - component: {fileID: 4032523051164657325}
   m_Layer: 0
   m_Name: SA_Sawmill
   m_TagString: Building
@@ -96,3 +97,18 @@ MonoBehaviour:
   stoneCost: 0
   goldCost: 150
   description: Generates wood
+--- !u!114 &4032523051164657325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8449898552965207816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df036ab775d843438b8d6d5e245d0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  woodIncome: 25
+  goldIncome: 0
+  stoneIncome: 0

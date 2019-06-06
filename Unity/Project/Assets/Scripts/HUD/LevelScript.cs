@@ -4,29 +4,23 @@ using UnityEngine;
 
 public class LevelScript : MonoBehaviour {
 
-    public int gold, wood, stone, score;
-    public float woodModifier, stoneModifier;
+    public int gold, wood, stone, score, woodModifier, stoneModifier;
     private float addWood, addStone;
     private float timer;
-
-    void Start() {
-    }
+    private GameObject[] buildings;
+    private BuildingIncome scriptIncome;
     
-    void Update() {
-        timer++;
-        if(timer >= 60) {
-            addWood += woodModifier;
-            addStone += stoneModifier;
+    public void Generate(int wave) {
+        wood += (stoneModifier + (5 * wave));
+        stone += (stoneModifier + (5 * wave));
 
-            if(addWood >= 1) {
-                wood++;
-                addWood = 0;
-            }
-            if(addStone >= 1) {
-                stone++;
-                addStone = 0;
-            }
-            timer = 0;
+        buildings = GameObject.FindGameObjectsWithTag("Building");
+
+        foreach(GameObject building in buildings) {
+            scriptIncome = building.GetComponent<BuildingIncome>();
+            scriptIncome.GenerateBuilding();
         }
+
+
     }
 }

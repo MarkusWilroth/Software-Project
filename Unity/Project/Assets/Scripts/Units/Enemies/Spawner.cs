@@ -8,15 +8,18 @@ public class Spawner : MonoBehaviour {
     private GameObject enemyLeaderO, enemyO;
     public Transform[] spawnSpots;
     public int activeLeader, spawnLeaders, goldGained;
+    private int waveCounter;
     private Transform enemyPos;
     private float timeStamp;
     public float waveTimer;
     private bool isSpawning;
     private string txtWave;
     public Text waveInfo;
+    private LevelScript scriptLevel;
 
     void Start() {
         isSpawning = true;
+        scriptLevel = GameObject.Find("LevelManager").GetComponent<LevelScript>();
     }
 
     void Update() {
@@ -45,7 +48,10 @@ public class Spawner : MonoBehaviour {
     }
 
     public void StartWave() {
+        waveCounter++;
         goldGained = (int)(waveTimer - timeStamp);
+        scriptLevel.gold += goldGained;
+        scriptLevel.Generate(waveCounter);
         timeStamp = 0;
         waveTimer += 2;
         spawnLeaders += 2;
