@@ -109,8 +109,11 @@ public class Hero_Movement : MonoBehaviour {
 
     void Respawn() {
         target = spawnPoint.transform.position;
-        transform.position = target;
-        movementState = MovementState.idle;
+        //transform.position = target;
+        if(transform.position == target) {
+            movementState = MovementState.idle;
+        }
+        
     }
 
     public void MakeActive() {

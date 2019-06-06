@@ -10,16 +10,18 @@ public class Respawn : MonoBehaviour {
     private float timeStamp;
 
     HealthManager scriptHealth;
-
+    Hero_Movement scriptMovement;
     FireArrow scriptArrow;
 
     void Start() {
         scriptHealth = gameObject.GetComponent<HealthManager>();
         scriptArrow = gameObject.GetComponent<FireArrow>();
+        scriptMovement = gameObject.GetComponent<Hero_Movement>();
     }
     
     void Update() {
         if(isRespawning) {
+            scriptMovement.movementState = Hero_Movement.MovementState.dead;
             timeStamp += Time.deltaTime;
             scriptHealth.enabled = false;
 
@@ -28,7 +30,9 @@ public class Respawn : MonoBehaviour {
             }
 
             if(spawnTime <= timeStamp) {
+                scriptMovement.movementState = Hero_Movement.MovementState.respawn;
                 isRespawning = false;
+                timeStamp = 0;
                 scriptHealth.enabled = true;
 
                 if(isRanged) {
