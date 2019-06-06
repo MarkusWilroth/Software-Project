@@ -3,25 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Respawn : MonoBehaviour {
-    public bool isRespawning;
+    public bool isRespawning, isHero;
     public bool isRanged;
 
     public float spawnTime;
     private float timeStamp;
 
     HealthManager scriptHealth;
-    Hero_Movement scriptMovement;
+    Hero_Movement scriptHeroMovement;
+    SoldierMovement scriptSoldierMovement;
     FireArrow scriptArrow;
 
     void Start() {
         scriptHealth = gameObject.GetComponent<HealthManager>();
         scriptArrow = gameObject.GetComponent<FireArrow>();
-        scriptMovement = gameObject.GetComponent<Hero_Movement>();
+        if(isHero) {
+            scriptHeroMovement = gameObject.GetComponent<Hero_Movement>();
+        }
+        else {
+            scriptSoldierMovement = gameObject.GetComponent<SoldierMovement>();
+        }
+        
     }
     
     void Update() {
         if(isRespawning) {
-            scriptMovement.movementState = Hero_Movement.MovementState.dead;
+            if(isHero) {
+                scriptHeroMovement.movementState = Hero_Movement.MovementState.dead;
+            }
+            else {
+                scriptSoldierMovement.movementState = SoldierMovement.MovementState.dead;
+            }
+            
             timeStamp += Time.deltaTime;
 
             if(isRanged) {
@@ -29,7 +42,11 @@ public class Respawn : MonoBehaviour {
             }
 
             if(spawnTime <= timeStamp) {
-                scriptMovement.movementState = Hero_Movement.MovementState.respawn;
+                if (isHero) {
+                    scriptHeroMovement.movementState = Hero_Movement.MovementState.respawn;
+                } else {
+                    scriptSoldierMovement.movementState = SoldierMovement.MovementState.respawn;
+                }
                 isRespawning = false;
                 timeStamp = 0;
 

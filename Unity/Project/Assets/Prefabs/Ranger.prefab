@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7348202d95f9e742a39a81ed474390b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitType: 1
   activated: 0
   heroPos: {fileID: 0}
   target: {x: 0, y: 0, z: 0}

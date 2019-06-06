@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -1343844216959878725}
   - component: {fileID: -7177816583020545556}
   - component: {fileID: 4145906752418228642}
+  - component: {fileID: -8253036484252421656}
   m_Layer: 0
   m_Name: Swordsman
   m_TagString: Soldier
@@ -130,7 +131,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5491092165501036306}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f390d4698b933844bffae2687068ec8, type: 3}
   m_Name: 
@@ -186,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRespawning: 0
+  isHero: 0
   isRanged: 0
   spawnTime: 5
 --- !u!114 &4145906752418228642
@@ -201,6 +203,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 1
-  damage: 2
+  damage: 3
   attackTime: 0.8
   scriptHealth: {fileID: 0}
+--- !u!114 &-8253036484252421656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491092165501036306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7348202d95f9e742a39a81ed474390b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitType: 2
+  activated: 0
+  heroPos: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
+  movementState: 0
+  speed: 2.8
+  maxDistance: 1
+  minDistance: 0.5
+  heroDistance: 0

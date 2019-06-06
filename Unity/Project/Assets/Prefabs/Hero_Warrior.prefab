@@ -138,23 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21e91c3befa2994699e9b548d9c04db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 40
-  HP: 40
-  armour: 3
-  damage: 15
-  soldiers: 0
-  maxSoldiers: 5
-  soldiersLvl: 1
   Exp: 0
-  range: 0
-  speed: 5
-  id: 2
-  respawnTimer: 0
-  reload: 0
-  activated: 0
-  point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
-  arrowProjectile: {fileID: 0}
-  enemyO: {fileID: 0}
 --- !u!114 &7002057622122529246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,9 +151,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7348202d95f9e742a39a81ed474390b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  point: {fileID: 7526610852216702381, guid: d868c716462ef574f9d5353ca3265b9f, type: 3}
+  unitType: 0
+  activated: 0
+  heroPos: {fileID: 0}
   target: {x: -4, y: -2, z: 0}
+  movementState: 0
+  speed: 5
+  maxDistance: 0
+  minDistance: 0
+  heroDistance: 0
 --- !u!114 &-8407152527370855316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRespawning: 0
+  isHero: 1
   isRanged: 0
   spawnTime: 10
 --- !u!114 &-2272552837428911930

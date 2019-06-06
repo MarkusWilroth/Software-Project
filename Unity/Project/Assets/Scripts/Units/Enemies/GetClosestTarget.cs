@@ -47,7 +47,6 @@ public class GetClosestTarget : MonoBehaviour {
 
     public void GetScript() {
         scriptMovement = gameObject.GetComponent<EnemyMovement>();
-        Debug.Log("ScriptMovement: "+scriptMovement);
     }
 
 

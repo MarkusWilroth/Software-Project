@@ -115,11 +115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7348202d95f9e742a39a81ed474390b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitType: 0
   activated: 0
-  heroPos: {x: 0, y: 0}
+  heroPos: {fileID: 0}
   target: {x: -4, y: -5, z: 0}
   movementState: 0
-  Hero: {fileID: 0}
   speed: 5
   maxDistance: 0
   minDistance: 0
@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRespawning: 0
+  isHero: 1
   isRanged: 1
   spawnTime: 10
 --- !u!114 &4821767893579872086

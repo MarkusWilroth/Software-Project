@@ -12,14 +12,15 @@ public class SoldierMovement : MonoBehaviour {
         respawn,
     }
     private float distEnemy, attackRange;
+    public int unitType;
     public bool activated;
-    public Vector2 heroPos;
+    public Transform heroPos;
     public Vector3 target;
     public MovementState movementState;
     private HealthManager scriptHealth;
     private GetClosestEnemy scriptGetEnemy;
     private GameObject enemyO, spawnPoint, heroO;
-    public GameObject hero;
+    private GameObject hero;
     private Hero_Movement scriptHero;
 
     
@@ -27,30 +28,40 @@ public class SoldierMovement : MonoBehaviour {
     private Transform enemyPos;
 
     void Start() {
-        scriptHero = hero.GetComponent<Hero_Movement>();
+        
         scriptGetEnemy = gameObject.GetComponent<GetClosestEnemy>();
         scriptHealth = gameObject.GetComponent<HealthManager>();
         spawnPoint = GameObject.Find("CastleSpawn");
 
         movementState = MovementState.follow;
         attackRange = 4;
+
+        switch (unitType) {
+            case 1:
+                hero = GameObject.FindGameObjectWithTag("RangeHero");
+                heroPos = hero.transform;
+                scriptHero = hero.GetComponent<Hero_Movement>();
+                break;
+            case 2:
+                hero = GameObject.FindGameObjectWithTag("WarriorHero");
+                heroPos = hero.transform;
+                scriptHero = hero.GetComponent<Hero_Movement>();
+                break;
+        }
         //heroO = Hero.
     }
 
     void Update() {
-        heroPos = scriptHero.heroPos;
-        Debug.Log("Hero position: " + heroPos);
 
-        if (scriptHero.movementState == Hero_Movement.MovementState.fighting) {
-            movementState = MovementState.fighting;
-        }
-        if (scriptHero.movementState == Hero_Movement.MovementState.retreating) {
-            movementState = MovementState.retreating;
-        }
-        if (scriptHero.movementState == Hero_Movement.MovementState.respawn) {
+        if (scriptHero.movementState == Hero_Movement.MovementState.idle) {
             movementState = MovementState.follow;
-        }
-        if (scriptHero.movementState == Hero_Movement.MovementState.dead) {
+        } else if (scriptHero.movementState == Hero_Movement.MovementState.fighting) {
+            movementState = MovementState.fighting;
+        } else if (scriptHero.movementState == Hero_Movement.MovementState.retreating) {
+            movementState = MovementState.retreating;
+        } else if (scriptHero.movementState == Hero_Movement.MovementState.respawn) {
+            movementState = MovementState.follow;
+        } else if (scriptHero.movementState == Hero_Movement.MovementState.dead) {
             movementState = MovementState.fighting;
         }
 
@@ -59,6 +70,7 @@ public class SoldierMovement : MonoBehaviour {
             distEnemy = Vector2.Distance(transform.position, enemyO.transform.position);
         }
 
+        heroDistance = Vector2.Distance(transform.position, heroPos.position);
         switch (movementState) {
             case MovementState.follow:
                 FollowHero();
@@ -77,22 +89,25 @@ public class SoldierMovement : MonoBehaviour {
                 Respawn();
                 break;
         }
+        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
     void FollowHero() {
-        heroDistance = Vector2.Distance(transform.position, hero.transform.position);
-        //if (heroDistance > maxDistance) {
-            target = hero.transform.position;
-        //} 
-        //else if (heroDistance < minDistance) {
-        //    transform.position = Vector2.MoveTowards(transform.position, heroPos, -speed * Time.deltaTime);
-        //}
+        if (heroDistance > maxDistance) {
+            target = heroPos.position;
+        } 
+        else {
+            target = transform.position;
+        }
     }
+
     void Fight() {
         if(distEnemy <= attackRange) {
             target = enemyO.transform.position;
         }
-        
+        else {
+            target = transform.position;
+        }
     }
 
     void FallBack() {
@@ -109,7 +124,7 @@ public class SoldierMovement : MonoBehaviour {
     void Respawn() {
         target = spawnPoint.transform.position;
 
-        if (transform.position == target) {
+        if (transform.position == target && !(scriptHero.movementState == Hero_Movement.MovementState.dead)) {
             movementState = MovementState.follow;
         }
 
